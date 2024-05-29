@@ -1,0 +1,9 @@
+
+State Machine - |meikyuu|player:player|estado
+Name estado.NADA estado.MOVE_LEFT estado.MOVE_RIGHT estado.MOVE_DOWN estado.MOVE_UP estado.IDLE 
+estado.IDLE 0 0 0 0 0 0 
+estado.MOVE_UP 0 0 0 0 1 1 
+estado.MOVE_DOWN 0 0 0 1 0 1 
+estado.MOVE_RIGHT 0 0 1 0 0 1 
+estado.MOVE_LEFT 0 1 0 0 0 1 
+estado.NADA 1 0 0 0 0 1 
