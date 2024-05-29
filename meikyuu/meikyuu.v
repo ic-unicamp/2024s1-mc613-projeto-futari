@@ -87,4 +87,6 @@ reg mapa_L2 = ((h_counter > 96 + 640 - 100 && v_counter < 2 + 100) || (v_counter
 reg mapa_L3 = ((h_counter > 96 + 640 - 100 && v_counter > 2 + 480 - 100) || (v_counter < 2 + 100) || (h_counter < 96 + 100)) ? 1 : 0; //Parede em L
 reg mapa_L4 = ((h_counter < 96 + 100 && v_counter > 2 + 480 - 100) || (v_counter > 2 + 100) || (h_counter > 96 + 640 - 100)) ? 1 : 0; //Parede em L
 
+reg mapa_encruzilhada = (h_counter < 96 + 100 && h_counter > 96 + 640 - 100 && v_counter < 2 + 100 && v_counter > 2 + 480 - 100) ? 1 : 0; // Encruzilhada
+
 endmodule
