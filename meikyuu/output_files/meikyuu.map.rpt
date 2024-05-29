@@ -1,5 +1,5 @@
 Analysis & Synthesis report for meikyuu
-Wed May 29 16:30:42 2024
+Wed May 29 17:23:12 2024
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -47,7 +47,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed May 29 16:30:42 2024       ;
+; Analysis & Synthesis Status     ; Successful - Wed May 29 17:23:12 2024       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; meikyuu                                     ;
 ; Top-level Entity Name           ; meikyuu                                     ;
@@ -187,14 +187,14 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+----------+
 ; Resource                                    ; Usage    ;
 +---------------------------------------------+----------+
-; Estimate of Logic utilization (ALMs needed) ; 134      ;
+; Estimate of Logic utilization (ALMs needed) ; 169      ;
 ;                                             ;          ;
-; Combinational ALUT usage for logic          ; 194      ;
+; Combinational ALUT usage for logic          ; 256      ;
 ;     -- 7 input functions                    ; 5        ;
-;     -- 6 input functions                    ; 69       ;
-;     -- 5 input functions                    ; 26       ;
-;     -- 4 input functions                    ; 22       ;
-;     -- <=3 input functions                  ; 72       ;
+;     -- 6 input functions                    ; 76       ;
+;     -- 5 input functions                    ; 36       ;
+;     -- 4 input functions                    ; 47       ;
+;     -- <=3 input functions                  ; 92       ;
 ;                                             ;          ;
 ; Dedicated logic registers                   ; 70       ;
 ;                                             ;          ;
@@ -204,8 +204,8 @@ refer to the applicable agreement for further details.
 ;                                             ;          ;
 ; Maximum fan-out node                        ; CLOCK_25 ;
 ; Maximum fan-out                             ; 71       ;
-; Total fan-out                               ; 1179     ;
-; Average fan-out                             ; 3.53     ;
+; Total fan-out                               ; 1421     ;
+; Average fan-out                             ; 3.59     ;
 +---------------------------------------------+----------+
 
 
@@ -214,8 +214,8 @@ refer to the applicable agreement for further details.
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name    ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------+-------------+--------------+
-; |meikyuu                   ; 194 (91)            ; 70 (22)                   ; 0                 ; 0          ; 35   ; 0            ; |meikyuu               ; meikyuu     ; work         ;
-;    |player:player|         ; 103 (103)           ; 48 (48)                   ; 0                 ; 0          ; 0    ; 0            ; |meikyuu|player:player ; player      ; work         ;
+; |meikyuu                   ; 256 (100)           ; 70 (22)                   ; 0                 ; 0          ; 35   ; 0            ; |meikyuu               ; meikyuu     ; work         ;
+;    |player:player|         ; 156 (156)           ; 48 (48)                   ; 0                 ; 0          ; 0    ; 0            ; |meikyuu|player:player ; player      ; work         ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -258,7 +258,7 @@ Encoding Type:  One-Hot
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 69    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 49    ;
+; Number of registers using Clock Enable       ; 48    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -268,18 +268,18 @@ Encoding Type:  One-Hot
 +-----------------------------------------+---------+
 ; Inverted Register                       ; Fan out ;
 +-----------------------------------------+---------+
-; player:player|x_pos[8]                  ; 11      ;
-; player:player|x_pos[7]                  ; 13      ;
-; player:player|x_pos[5]                  ; 12      ;
-; player:player|x_pos[4]                  ; 11      ;
-; player:player|x_pos[2]                  ; 3       ;
-; player:player|x_pos[1]                  ; 3       ;
-; player:player|x_pos[0]                  ; 3       ;
-; player:player|y_pos[8]                  ; 7       ;
-; player:player|y_pos[3]                  ; 5       ;
+; player:player|x_pos[2]                  ; 7       ;
+; player:player|x_pos[1]                  ; 7       ;
+; player:player|x_pos[0]                  ; 7       ;
+; player:player|x_pos[5]                  ; 18      ;
+; player:player|x_pos[4]                  ; 18      ;
+; player:player|x_pos[8]                  ; 21      ;
+; player:player|x_pos[7]                  ; 24      ;
+; player:player|y_pos[3]                  ; 6       ;
 ; player:player|y_pos[1]                  ; 3       ;
+; player:player|y_pos[8]                  ; 7       ;
 ; player:player|mapa_y_pos[0]             ; 5       ;
-; player:player|mapa_x_pos[0]             ; 6       ;
+; player:player|mapa_x_pos[0]             ; 5       ;
 ; Total number of inverted registers = 12 ;         ;
 +-----------------------------------------+---------+
 
@@ -290,10 +290,10 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
 ; 7:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |meikyuu|player:player|y_pos[7]       ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |meikyuu|player:player|x_pos[3]       ;
-; 8:1                ; 19 bits   ; 95 LEs        ; 0 LEs                ; 95 LEs                 ; Yes        ; |meikyuu|player:player|move_timer[11] ;
+; 8:1                ; 3 bits    ; 15 LEs        ; 9 LEs                ; 6 LEs                  ; Yes        ; |meikyuu|player:player|x_pos[3]       ;
+; 10:1               ; 19 bits   ; 114 LEs       ; 0 LEs                ; 114 LEs                ; Yes        ; |meikyuu|player:player|move_timer[11] ;
 ; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |meikyuu|player:player|y_pos[8]       ;
-; 7:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |meikyuu|player:player|x_pos[7]       ;
+; 8:1                ; 7 bits    ; 35 LEs        ; 21 LEs               ; 14 LEs                 ; Yes        ; |meikyuu|player:player|x_pos[7]       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
 
 
@@ -313,29 +313,31 @@ Encoding Type:  One-Hot
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; arriav_ff             ; 70                          ;
-;     CLR               ; 10                          ;
+;     CLR               ; 11                          ;
 ;     CLR SCLR          ; 10                          ;
-;     ENA CLR           ; 20                          ;
+;     ENA CLR           ; 19                          ;
 ;     ENA CLR SCLR      ; 29                          ;
 ;     plain             ; 1                           ;
-; arriav_lcell_comb     ; 198                         ;
-;     arith             ; 59                          ;
-;         1 data inputs ; 41                          ;
-;         2 data inputs ; 18                          ;
+; arriav_lcell_comb     ; 260                         ;
+;     arith             ; 79                          ;
+;         1 data inputs ; 61                          ;
+;         2 data inputs ; 9                           ;
+;         3 data inputs ; 2                           ;
+;         4 data inputs ; 7                           ;
 ;     extend            ; 5                           ;
 ;         7 data inputs ; 5                           ;
-;     normal            ; 134                         ;
+;     normal            ; 176                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 3                           ;
-;         2 data inputs ; 7                           ;
-;         3 data inputs ; 5                           ;
-;         4 data inputs ; 22                          ;
-;         5 data inputs ; 26                          ;
-;         6 data inputs ; 69                          ;
+;         2 data inputs ; 3                           ;
+;         3 data inputs ; 16                          ;
+;         4 data inputs ; 40                          ;
+;         5 data inputs ; 36                          ;
+;         6 data inputs ; 76                          ;
 ; boundary_port         ; 35                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 3.64                        ;
+; Max LUT depth         ; 6.70                        ;
+; Average LUT depth     ; 4.31                        ;
 +-----------------------+-----------------------------+
 
 
@@ -354,94 +356,96 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Wed May 29 16:30:37 2024
+    Info: Processing started: Wed May 29 17:23:07 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off meikyuu -c meikyuu
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file player.v
     Info (12023): Found entity 1: player File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 1
-Warning (10275): Verilog HDL Module Instantiation warning at meikyuu.v(59): ignored dangling comma in List of Port Connections File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 59
+Warning (10275): Verilog HDL Module Instantiation warning at meikyuu.v(60): ignored dangling comma in List of Port Connections File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 60
 Info (12021): Found 1 design units, including 1 entities, in source file meikyuu.v
     Info (12023): Found entity 1: meikyuu File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 1
 Info (12127): Elaborating entity "meikyuu" for the top level hierarchy
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(38): truncated value with size 32 to match size of target (8) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 38
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(39): truncated value with size 32 to match size of target (8) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 39
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(40): truncated value with size 32 to match size of target (8) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 40
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(74): truncated value with size 8 to match size of target (4) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 74
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(75): truncated value with size 8 to match size of target (4) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 75
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(76): truncated value with size 8 to match size of target (4) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 76
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(79): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(82): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 82
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(118): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 118
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(77): truncated value with size 8 to match size of target (4) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 77
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(80): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(83): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 83
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(119): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 119
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(120): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 120
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(121): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 121
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(123): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 123
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(122): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 122
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(124): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 124
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(125): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 125
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(126): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 126
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(127): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 127
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(128): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 128
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(129): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 129
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(130): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 130
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(131): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 131
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(133): truncated value with size 3 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 133
-Info (10041): Inferred latch for "mapa_global[0][0][0]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[0][0][1]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[0][0][2]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[0][0][3]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[0][1][0]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[0][1][1]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[0][1][2]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[0][1][3]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[0][2][0]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[0][2][1]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[0][2][2]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[0][2][3]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[1][0][0]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[1][0][1]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[1][0][2]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[1][0][3]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[1][1][0]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[1][1][1]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[1][1][2]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[1][1][3]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[1][2][0]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[1][2][1]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[1][2][2]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[1][2][3]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[2][0][0]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[2][0][1]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[2][0][2]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[2][0][3]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[2][1][0]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[2][1][1]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[2][1][2]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[2][1][3]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[2][2][0]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[2][2][1]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[2][2][2]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
-Info (10041): Inferred latch for "mapa_global[2][2][3]" at meikyuu.v(79) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 79
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(133): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 133
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(135): truncated value with size 3 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 135
+Info (10041): Inferred latch for "mapa_global[0][0][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[0][0][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[0][0][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[0][0][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[0][1][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[0][1][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[0][1][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[0][1][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[0][2][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[0][2][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[0][2][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[0][2][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[1][0][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[1][0][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[1][0][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[1][0][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[1][1][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[1][1][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[1][1][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[1][1][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[1][2][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[1][2][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[1][2][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[1][2][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[2][0][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[2][0][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[2][0][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[2][0][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[2][1][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[2][1][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[2][1][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[2][1][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[2][2][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[2][2][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[2][2][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Info (10041): Inferred latch for "mapa_global[2][2][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "mapa_global" into its bus
-Info (12128): Elaborating entity "player" for hierarchy "player:player" File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 59
-Warning (10230): Verilog HDL assignment warning at player.v(19): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 19
+Info (12128): Elaborating entity "player" for hierarchy "player:player" File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 60
 Warning (10230): Verilog HDL assignment warning at player.v(20): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 20
-Warning (10230): Verilog HDL assignment warning at player.v(42): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 42
+Warning (10230): Verilog HDL assignment warning at player.v(21): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 21
 Warning (10230): Verilog HDL assignment warning at player.v(43): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 43
-Warning (10230): Verilog HDL assignment warning at player.v(72): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 72
-Warning (10230): Verilog HDL assignment warning at player.v(73): truncated value with size 32 to match size of target (3) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 73
-Warning (10230): Verilog HDL assignment warning at player.v(76): truncated value with size 32 to match size of target (19) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 76
+Warning (10230): Verilog HDL assignment warning at player.v(44): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 44
+Warning (10230): Verilog HDL assignment warning at player.v(73): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 73
+Warning (10230): Verilog HDL assignment warning at player.v(74): truncated value with size 32 to match size of target (3) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 74
+Warning (10230): Verilog HDL assignment warning at player.v(77): truncated value with size 32 to match size of target (19) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 77
 Warning (10230): Verilog HDL assignment warning at player.v(80): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 80
-Warning (10230): Verilog HDL assignment warning at player.v(89): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 89
-Warning (10230): Verilog HDL assignment warning at player.v(90): truncated value with size 32 to match size of target (3) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 90
-Warning (10230): Verilog HDL assignment warning at player.v(93): truncated value with size 32 to match size of target (19) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 93
-Warning (10230): Verilog HDL assignment warning at player.v(97): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 97
-Warning (10230): Verilog HDL assignment warning at player.v(106): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 106
-Warning (10230): Verilog HDL assignment warning at player.v(107): truncated value with size 32 to match size of target (3) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 107
-Warning (10230): Verilog HDL assignment warning at player.v(110): truncated value with size 32 to match size of target (19) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 110
-Warning (10230): Verilog HDL assignment warning at player.v(114): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 114
-Warning (10230): Verilog HDL assignment warning at player.v(123): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 123
-Warning (10230): Verilog HDL assignment warning at player.v(124): truncated value with size 32 to match size of target (3) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 124
-Warning (10230): Verilog HDL assignment warning at player.v(127): truncated value with size 32 to match size of target (19) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 127
-Warning (10230): Verilog HDL assignment warning at player.v(131): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 131
+Warning (10230): Verilog HDL assignment warning at player.v(85): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 85
+Warning (10230): Verilog HDL assignment warning at player.v(94): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 94
+Warning (10230): Verilog HDL assignment warning at player.v(95): truncated value with size 32 to match size of target (3) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 95
+Warning (10230): Verilog HDL assignment warning at player.v(98): truncated value with size 32 to match size of target (19) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 98
+Warning (10230): Verilog HDL assignment warning at player.v(102): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 102
+Warning (10230): Verilog HDL assignment warning at player.v(111): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 111
+Warning (10230): Verilog HDL assignment warning at player.v(112): truncated value with size 32 to match size of target (3) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 112
+Warning (10230): Verilog HDL assignment warning at player.v(115): truncated value with size 32 to match size of target (19) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 115
+Warning (10230): Verilog HDL assignment warning at player.v(119): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 119
+Warning (10230): Verilog HDL assignment warning at player.v(128): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 128
+Warning (10230): Verilog HDL assignment warning at player.v(129): truncated value with size 32 to match size of target (3) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 129
+Warning (10230): Verilog HDL assignment warning at player.v(132): truncated value with size 32 to match size of target (19) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 132
+Warning (10230): Verilog HDL assignment warning at player.v(136): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 136
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "VGA_R[1]" is stuck at GND File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 8
     Warning (13410): Pin "VGA_R[6]" is stuck at GND File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 8
@@ -1079,13 +1083,13 @@ Warning (20013): Ignored 24 assignments for entity "top3" -- entity does not exi
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity top3 -section_id Top was ignored
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 268 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 330 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 6 input pins
     Info (21059): Implemented 29 output pins
-    Info (21061): Implemented 233 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 675 warnings
-    Info: Peak virtual memory: 1309 megabytes
-    Info: Processing ended: Wed May 29 16:30:42 2024
+    Info (21061): Implemented 295 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 677 warnings
+    Info: Peak virtual memory: 1321 megabytes
+    Info: Processing ended: Wed May 29 17:23:12 2024
     Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:14
 

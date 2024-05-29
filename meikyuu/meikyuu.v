@@ -48,6 +48,7 @@ player player(
   .reset(reset),
   .x_pos_in(x_pos),
   .y_pos_in(y_pos),
+  .collision(mapa_vertical_colision),
   .btn_up(btn_up),
   .btn_down(btn_down),
   .btn_left(btn_left),
@@ -121,6 +122,7 @@ assign active = ((v_counter > 2) && (h_counter > 96)) ? 1 : 0;
 assign active_cube = ((v_counter > y_pos) && (h_counter > x_pos) && (v_counter <= y_pos + 16) && (h_counter <= x_pos + 16)) ? 1 : 0;
 
 wire mapa_vertical = active && (h_counter < 96 + 100 || h_counter > 96 + 640 - 100) ? 1 : 0; // Parades retas horizontais
+wire mapa_vertical_colision = (x_pos < 96 + 100 || x_pos + 16 > 96 + 640 - 100) ? 1 : 0;
 wire mapa_horizontal = active && (v_counter < 2 + 100 || v_counter > 2 + 480 - 100) ? 1 : 0; // Parades retas verticais
 
 wire mapa_L1 = active && ((h_counter < 96 + 100 && v_counter < 2 + 100) || (v_counter > 2 + 480 - 100) || (h_counter > 96 + 640 - 100)) ? 1 : 0; //Parede em L

@@ -3,6 +3,7 @@ module player (
     input reset,
     input [9:0] x_pos_in,
     input [9:0] y_pos_in,
+    input collision,
     input btn_up,
     input btn_down,
     input btn_left,
@@ -75,6 +76,10 @@ always @ (posedge CLOCK_25 or posedge reset) begin
                 if(~btn_left) begin
                     move_timer = move_timer + 1;
                     estado = MOVE_LEFT;
+                    if(collision) begin
+                            x_pos = x_pos + 1;
+                        end
+
                     if (move_timer == MAX_TIMER) begin
                         move_timer = 0;
                         x_pos = x_pos_in - 1;
@@ -126,7 +131,7 @@ always @ (posedge CLOCK_25 or posedge reset) begin
                 if(~btn_right) begin
                     move_timer = move_timer + 1;
                     estado = MOVE_RIGHT;
-                    if (move_timer == MAX_TIMER) begin
+                    if (move_timer == MAX_TIMER && ~collision) begin
                         move_timer = 0;
                         x_pos = x_pos_in + 1;
                     end
