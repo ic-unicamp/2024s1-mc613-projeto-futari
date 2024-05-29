@@ -79,4 +79,14 @@ assign VGA_VS = (v_counter <= 2) ? 1 : 0;
 assign active = ((v_counter > 2) && (h_counter > 96)) ? 1 : 0;
 assign active_cube = ((v_counter > y_pos) && (h_counter > x_pos) && (v_counter <= y_pos + 16) && (h_counter <= x_pos + 16)) ? 1 : 0;
 
+reg mapa_vertical = (h_counter < 96 + 100 && h_counter > 96 + 640 - 100) ? 1 : 0; // Parades retas horizontais
+reg mapa_horizontal = (v_counter < 2 + 100 && v_counter > 2 + 480 - 100) ? 1 : 0; // Parades retas verticais
+
+reg mapa_L1 = ((h_counter < 96 + 100 && v_counter < 2 + 100) || (v_counter > 2 + 480 - 100) || (h_counter > 96 + 640 - 100)) ? 1 : 0; //Parede em L
+reg mapa_L2 = ((h_counter > 96 + 640 - 100 && v_counter < 2 + 100) || (v_counter > 2 + 480 - 100) || (h_counter < 96 + 100)) ? 1 : 0; //Parede em L
+reg mapa_L3 = ((h_counter > 96 + 640 - 100 && v_counter > 2 + 480 - 100) || (v_counter < 2 + 100) || (h_counter < 96 + 100)) ? 1 : 0; //Parede em L
+reg mapa_L4 = ((h_counter < 96 + 100 && v_counter > 2 + 480 - 100) || (v_counter > 2 + 100) || (h_counter > 96 + 640 - 100)) ? 1 : 0; //Parede em L
+
+reg mapa_encruzilhada = (h_counter < 96 + 100 && h_counter > 96 + 640 - 100 && v_counter < 2 + 100 && v_counter > 2 + 480 - 100) ? 1 : 0; // Encruzilhada
+
 endmodule
