@@ -17,7 +17,11 @@ module player (
 reg [9:0] x_pos = 96 + 48 - 16 + 311;
 reg [9:0] y_pos  = 2 + 33 + 231;
 
+reg [17:0] move_timer;
+
 reg [2:0] estado = IDLE;
+
+localparam MAX_TIMER = 300000;
 
 localparam NADA       = 3'b000;
 localparam MOVE_UP    = 3'b001;
@@ -29,9 +33,11 @@ localparam IDLE       = 3'b101;
 
 always @ (posedge CLOCK_25 or posedge reset) begin
     if (reset) begin
-      x_pos = 96 + 48 - 16 + 311;
-      y_pos = 2 + 33 + 231;
-      estado = IDLE;
+        x_pos = 96 + 48 - 16 + 311;
+        y_pos = 2 + 33 + 231;
+        estado = IDLE;
+        move_timer = 0;
+
     end else begin
         x_pos = x_pos_in;
         y_pos = y_pos_in;
@@ -50,63 +56,72 @@ always @ (posedge CLOCK_25 or posedge reset) begin
                     estado = MOVE_RIGHT;
                 end else begin
                     estado = IDLE;
+                    move_timer = 0;
                 end
             end
             MOVE_LEFT: begin
-                x_pos = x_pos_in - 16;
-
                 if(x_pos < 96 + 48 - 16) begin
                     x_pos = 96 + 48 + 640 - 16;
                 end
                 if(~btn_left) begin
-                    estado = NADA;
+                    move_timer = move_timer + 1;
+                    estado = MOVE_LEFT;
+                    if (move_timer == MAX_TIMER) begin
+                        move_timer = 0;
+                        x_pos = x_pos_in - 1;
+                    end
                 end else begin
                     estado = IDLE;
                 end
             end
 
             MOVE_DOWN: begin
-                y_pos = y_pos_in + 16;
+                y_pos = y_pos_in + 1;
 
                 if(y_pos > 2 + 33 + 480 - 16) begin
                     y_pos = 2 + 33;
                 end
                 if(~btn_down) begin
-                    estado = NADA;
+                    move_timer = move_timer + 1;
+                    estado = MOVE_RIGHT;
+                    if (move_timer == MAX_TIMER) begin
+                        move_timer = 0;
+                        y_pos = y_pos_in + 1;
+                    end
                 end else begin
                     estado = IDLE;
                 end
             end
             
             MOVE_UP: begin
-                y_pos = y_pos_in - 16;
+                y_pos = y_pos_in - 1;
 
                 if(y_pos < 2 + 33) begin
                     y_pos = 2 + 33 + 480 - 16;
                 end
                 if(~btn_up) begin
-                    estado = NADA;
+                    move_timer = move_timer + 1;
+                    estado = MOVE_RIGHT;
+                    if (move_timer == MAX_TIMER) begin
+                        move_timer = 0;
+                        y_pos = y_pos_in - 1;
+                    end
                 end else begin
                     estado = IDLE;
                 end
             end
 
             MOVE_RIGHT: begin
-                x_pos = x_pos_in + 16;
-
                 if(x_pos > 96 + 48 + 640 - 16) begin
                     x_pos = 96 + 48 - 16;
                 end
                 if(~btn_right) begin
-                    estado = NADA;
-                end else begin
-                    estado = IDLE;
-                end
-            end
-
-            NADA: begin
-                if(~btn_left || ~btn_down || ~btn_up || ~btn_right) begin
-                    estado = NADA;
+                    move_timer = move_timer + 1;
+                    estado = MOVE_RIGHT;
+                    if (move_timer == MAX_TIMER) begin
+                        move_timer = 0;
+                        x_pos = x_pos_in + 1;
+                    end
                 end else begin
                     estado = IDLE;
                 end
