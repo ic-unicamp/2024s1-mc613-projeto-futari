@@ -169,17 +169,17 @@ wire mapa_fechado_down_colision = (y_pos + 16 > 2 + 480 - 100 || x_pos < 96 + 10
 wire mapa_fechado_left = active && (h_counter < 96 + 100 || v_counter < 2 + 100 || v_counter > 2 + 480 - 100) ? 1 : 0; // Parede fechada na esquerda
 wire mapa_fechado_left_colision = (x_pos < 96 + 100 || y_pos < 2 + 100 || y_pos + 16 > 2 + 480 - 100) ? 1 : 0;
 
-wire mapa_T_up = active && (v_counter < 2 + 240 - 150 || (v_counter > 2 + 240 + 150 && h_counter < 96 + 100) || (v_counter > 2 + 240 + 150 && h_counter > 96 + 640 - 100)) ? 1 : 0; // Parede em T
-wire mapa_T_up_colision = (y_pos < 2 + 240 - 150 || (y_pos + 16 > 2 + 240 + 150 && x_pos < 96 + 100) || (y_pos + 16 > 2 + 240 + 150 && x_pos + 16 > 96 + 640 - 100)) ? 1 : 0;
+wire mapa_T_up = active && (v_counter < 2 + 100 || (v_counter > 2 + 480 - 100 && h_counter < 96 + 100) || (v_counter > 2 + 480 - 100 && h_counter > 96 + 640 - 100)) ? 1 : 0; // Parede em T
+wire mapa_T_up_colision = (y_pos < 2 + 100 || (y_pos + 16 > 2 + 480 - 100 && x_pos < 96 + 100) || (y_pos + 16 > 2 + 480 - 100 && x_pos + 16 > 96 + 640 - 100)) ? 1 : 0;
 
-wire mapa_T_right = active && (h_counter > 96 + 320 + 150 || (h_counter < 96 + 320 - 150 && v_counter < 2 + 100) || (h_counter < 96 + 320 - 150 && v_counter > 2 + 480 - 100)) ? 1 : 0; // Parede em T
-wire mapa_T_right_colision = (x_pos + 16 > 96 + 320 + 150 || (x_pos < 96 + 320 - 150 && y_pos < 2 + 100) || (x_pos < 96 + 320 - 150 && y_pos + 16 > 2 + 480 - 100)) ? 1 : 0;
+wire mapa_T_right = active && (h_counter > 96 + 640 - 100 || (h_counter < 96 + 100 && v_counter < 2 + 100) || (h_counter < 96 + 100 && v_counter > 2 + 480 - 100)) ? 1 : 0; // Parede em T
+wire mapa_T_right_colision = (x_pos + 16 > 96 + 640 - 100 || (x_pos < 96 + 100 && y_pos < 2 + 100) || (x_pos < 96 + 100 && y_pos + 16 > 2 + 480 - 100)) ? 1 : 0;
 
-wire mapa_T_down = active && (v_counter > 2 + 240 + 150 || (v_counter < 2 + 240 - 150 && h_counter < 96 + 100) || (v_counter < 2 + 240 - 150 && h_counter > 96 + 640 - 100)) ? 1 : 0; // Parede em T
-wire mapa_T_down_colision = (y_pos + 16 > 2 + 240 + 150 || (y_pos < 2 + 240 - 150 && x_pos < 96 + 100) || (y_pos < 2 + 240 - 150 && x_pos + 16 > 96 + 640 - 100)) ? 1 : 0;
+wire mapa_T_down = active && (v_counter > 2 + 480 - 100 || (v_counter < 2 + 100 && h_counter < 96 + 100) || (v_counter < 2 + 100 && h_counter > 96 + 640 - 100)) ? 1 : 0; // Parede em T
+wire mapa_T_down_colision = (y_pos + 16 > 2 + 480 - 100 || (y_pos < 2 + 100 && x_pos < 96 + 100) || (y_pos < 2 + 100 && x_pos + 16 > 96 + 640 - 100)) ? 1 : 0;
 
-wire mapa_T_left = active && (h_counter < 96 + 320 - 150 || (h_counter > 96 + 320 + 150 && v_counter < 2 + 100) || (h_counter > 96 + 320 + 150 && v_counter > 2 + 480 - 100)) ? 1 : 0; // Parede em T
-wire mapa_T_left_colision = (x_pos < 96 + 320 - 150 || (x_pos + 16 > 96 + 320 + 150 && y_pos < 2 + 100) || (x_pos + 16 > 96 + 320 + 150 && y_pos + 16 > 2 + 480 - 100)) ? 1 : 0;
+wire mapa_T_left = active && (h_counter < 96 + 100 || (h_counter > 96 + 640 - 100 && v_counter < 2 + 100) || (h_counter > 96 + 640 - 100 && v_counter > 2 + 480 - 100)) ? 1 : 0; // Parede em T
+wire mapa_T_left_colision = (x_pos < 96 + 100 || (x_pos + 16 > 96 + 640 - 100 && y_pos < 2 + 100) || (x_pos + 16 > 96 + 640 - 100 && y_pos + 16 > 2 + 480 - 100)) ? 1 : 0;
 
 wire mapa_atual = mapa_atual_reg;
 wire mapa_colision = mapa_colision_reg;
