@@ -48,7 +48,7 @@ player player(
   .reset(reset),
   .x_pos_in(x_pos),
   .y_pos_in(y_pos),
-  .collision(mapa_vertical_colision),
+  .collision(mapa_colision),
   .btn_up(btn_up),
   .btn_down(btn_down),
   .btn_left(btn_left),
@@ -89,29 +89,37 @@ always @ (posedge CLOCK_25 or posedge reset) begin
 end
 
 reg [2:0] mapa_atual_reg;
+reg mapa_colision_reg;
 
 always @(posedge CLOCK_25) begin
   case (mapa_global[mapa_y_pos][mapa_x_pos])
     8'h00: begin
       mapa_atual_reg = mapa_vertical;
+	    mapa_colision_reg = mapa_vertical_colision;
     end
     8'h01: begin
       mapa_atual_reg = mapa_horizontal;
+		  mapa_colision_reg = mapa_vertical_colision;
     end
     8'h02: begin
       mapa_atual_reg = mapa_L1;
+		  mapa_colision_reg = mapa_vertical_colision;
     end
     3: begin
       mapa_atual_reg = mapa_L2;
+		  mapa_colision_reg = mapa_vertical_colision;
     end
     4: begin
       mapa_atual_reg = mapa_L3;
+		  mapa_colision_reg = mapa_vertical_colision;
     end
     5: begin
       mapa_atual_reg = mapa_L4;
+		  mapa_colision_reg = mapa_vertical_colision;
     end
     6: begin
       mapa_atual_reg = mapa_encruzilhada;
+		  mapa_colision_reg = mapa_vertical_colision;
     end
   endcase
 end
@@ -133,5 +141,6 @@ wire mapa_L4 = active && ((h_counter < 96 + 100 && v_counter > 2 + 480 - 100) ||
 wire mapa_encruzilhada = active && ((h_counter < 96 + 100 || h_counter > 96 + 640 - 100) && (v_counter < 2 + 100 || v_counter > 2 + 480 - 100)) ? 1 : 0; // Encruzilhada
 
 wire mapa_atual = mapa_atual_reg;
+wire mapa_colision = mapa_colision_reg;
 
 endmodule

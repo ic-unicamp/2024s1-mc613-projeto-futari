@@ -97,6 +97,9 @@ always @ (posedge CLOCK_25 or posedge reset) begin
                 if(~btn_down) begin
                     move_timer = move_timer + 1;
                     estado = MOVE_DOWN;
+                    if(collision) begin
+                            y_pos = y_pos - 1;
+                        end
                     if (move_timer == MAX_TIMER) begin
                         move_timer = 0;
                         y_pos = y_pos_in + 1;
@@ -114,6 +117,9 @@ always @ (posedge CLOCK_25 or posedge reset) begin
                 if(~btn_up) begin
                     move_timer = move_timer + 1;
                     estado = MOVE_UP;
+                    if(collision) begin
+                            y_pos = y_pos + 1;
+                        end
                     if (move_timer == MAX_TIMER) begin
                         move_timer = 0;
                         y_pos = y_pos_in - 1;
@@ -131,6 +137,10 @@ always @ (posedge CLOCK_25 or posedge reset) begin
                 if(~btn_right) begin
                     move_timer = move_timer + 1;
                     estado = MOVE_RIGHT;
+                    if(collision) begin
+                            x_pos = x_pos - 1;
+                        end
+
                     if (move_timer == MAX_TIMER && ~collision) begin
                         move_timer = 0;
                         x_pos = x_pos_in + 1;
