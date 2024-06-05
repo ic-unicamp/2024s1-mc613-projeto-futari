@@ -72,9 +72,9 @@ always @ (posedge CLOCK_25 or posedge reset) begin
   if(reset) begin
     h_counter = 0;
     v_counter = 0;
-    mapa_global[0][0] = 8'h04; mapa_global[0][1] = 8'h01; mapa_global[0][2] = 8'h05;
+    mapa_global[0][0] = 8'h04; mapa_global[0][1] = 8'h04; mapa_global[0][2] = 8'h05;
     mapa_global[1][0] = 8'h00; mapa_global[1][1] = 8'h06; mapa_global[1][2] = 8'h00;
-    mapa_global[2][0] = 8'h03; mapa_global[2][1] = 8'h01; mapa_global[2][2] = 8'h02;
+    mapa_global[2][0] = 8'h03; mapa_global[2][1] = 8'h03; mapa_global[2][2] = 8'h02;
 
   end else begin
     h_counter = h_counter + 1;
@@ -93,33 +93,40 @@ reg mapa_colision_reg;
 
 always @(posedge CLOCK_25) begin
   case (mapa_global[mapa_y_pos][mapa_x_pos])
-    8'h00: begin
+    // corredor vertical
+    0: begin
       mapa_atual_reg = mapa_vertical;
 	    mapa_colision_reg = mapa_vertical_colision;
     end
-    8'h01: begin
+    // corredor horizontal
+    1: begin
       mapa_atual_reg = mapa_horizontal;
-		  mapa_colision_reg = mapa_vertical_colision;
+		  mapa_colision_reg = mapa_horizontal_colision;
     end
-    8'h02: begin
+    // faz o L
+    2: begin
       mapa_atual_reg = mapa_L1;
-		  mapa_colision_reg = mapa_vertical_colision;
+		  mapa_colision_reg = mapa_L1_colision;
     end
+    // Faz o L 90° horário
     3: begin
       mapa_atual_reg = mapa_L2;
-		  mapa_colision_reg = mapa_vertical_colision;
+		  mapa_colision_reg = mapa_L2_colision;
     end
+    // Faz o L 180°
     4: begin
       mapa_atual_reg = mapa_L3;
-		  mapa_colision_reg = mapa_vertical_colision;
+		  mapa_colision_reg = mapa_L3_colision;
     end
+    // Faz o L 90° anti-horário
     5: begin
       mapa_atual_reg = mapa_L4;
-		  mapa_colision_reg = mapa_vertical_colision;
+		  mapa_colision_reg = mapa_L4_colision;
     end
+    // mapa "+"
     6: begin
       mapa_atual_reg = mapa_encruzilhada;
-		  mapa_colision_reg = mapa_vertical_colision;
+		  mapa_colision_reg = mapa_encruzilhada_colision;
     end
   endcase
 end
@@ -131,23 +138,26 @@ assign active_cube = ((v_counter > y_pos) && (h_counter > x_pos) && (v_counter <
 
 wire mapa_vertical = active && (h_counter < 96 + 100 || h_counter > 96 + 640 - 100) ? 1 : 0; // Parades retas horizontais
 wire mapa_vertical_colision = (x_pos < 96 + 100 || x_pos + 16 > 96 + 640 - 100) ? 1 : 0;
+
 wire mapa_horizontal = active && (v_counter < 2 + 100 || v_counter > 2 + 480 - 100) ? 1 : 0; // Parades retas verticais
 wire mapa_horizontal_colision = (y_pos < 2 + 100 || y_pos + 16 > 2 + 480 - 100) ? 1 : 0;
 
 wire mapa_L1 = active && ((h_counter < 96 + 100 && v_counter < 2 + 100) || (v_counter > 2 + 480 - 100) || (h_counter > 96 + 640 - 100)) ? 1 : 0; //Parede em L
-wire mapa_L1_colision = (x_pos < 96 + 100 && y_pos < 2 + 100) || (y_pos > 2 + 480 - 100) || (x_pos > 96 + 640 - 100) ? 1 : 0;
+wire mapa_L1_colision = (x_pos < 96 + 100 && y_pos < 2 + 100) || (y_pos + 16 > 2 + 480 - 100) || (x_pos +  16 > 96 + 640 - 100) ? 1 : 0;
 
 wire mapa_L2 = active && ((h_counter > 96 + 640 - 100 && v_counter < 2 + 100) || (v_counter > 2 + 480 - 100) || (h_counter < 96 + 100)) ? 1 : 0; //Parede em L
-wire mapa_L2_colision = (x_pos > 96 + 640 - 100 && y_pos < 2 + 100) || (y_pos > 2 + 480 - 100) || (x_pos < 96 + 100) ? 1 : 0;
+wire mapa_L2_colision = (x_pos + 16 > 96 + 640 - 100 && y_pos < 2 + 100) || (y_pos + 16 > 2 + 480 - 100) || (x_pos < 96 + 100) ? 1 : 0;
 
 wire mapa_L3 = active && ((h_counter > 96 + 640 - 100 && v_counter > 2 + 480 - 100) || (v_counter < 2 + 100) || (h_counter < 96 + 100)) ? 1 : 0; //Parede em L
-wire mapa_L3_colision = (x_pos > 96 + 640 - 100 && y_pos > 2 + 480 - 100) || (y_pos < 2 + 100) || (x_pos < 96 + 100) ? 1 : 0;
+wire mapa_L3_colision = (x_pos + 16 > 96 + 640 - 100 && y_pos + 16 > 2 + 480 - 100) || (y_pos < 2 + 100) || (x_pos < 96 + 100) ? 1 : 0;
 
 wire mapa_L4 = active && ((h_counter < 96 + 100 && v_counter > 2 + 480 - 100) || (v_counter < 2 + 100) || (h_counter > 96 + 640 - 100)) ? 1 : 0; //Parede em L
-wire mapa_L4_colision = (x_pos < 96 + 100 && y_pos > 2 + 480 - 100) || (y_pos < 2 + 100) || (x_pos > 96 + 640 - 100) ? 1 : 0;
+wire mapa_L4_colision = (x_pos < 96 + 100 && y_pos + 16 > 2 + 480 - 100) || (y_pos < 2 + 100) || (x_pos + 16 > 96 + 640 - 100) ? 1 : 0;
 
 wire mapa_encruzilhada = active && ((h_counter < 96 + 100 || h_counter > 96 + 640 - 100) && (v_counter < 2 + 100 || v_counter > 2 + 480 - 100)) ? 1 : 0; // Encruzilhada
-wire mapa_encruzilhada_colision = (x_pos < 96 + 100 || x_pos > 96 + 640 - 100) && (y_pos < 2 + 100 || y_pos > 2 + 480 - 100) ? 1 : 0;
+wire mapa_encruzilhada_colision = (x_pos < 96 + 100 || x_pos + 16 > 96 + 640 - 100) && (y_pos < 2 + 100 || y_pos + 16> 2 + 480 - 100) ? 1 : 0;
+
+
 
 wire mapa_atual = mapa_atual_reg;
 wire mapa_colision = mapa_colision_reg;

@@ -1,5 +1,5 @@
 Flow report for meikyuu
-Wed Jun  5 14:30:55 2024
+Wed Jun  5 14:43:34 2024
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -40,15 +40,15 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Wed Jun  5 14:30:55 2024       ;
+; Flow Status                     ; Successful - Wed Jun  5 14:43:34 2024       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; meikyuu                                     ;
 ; Top-level Entity Name           ; meikyuu                                     ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 190 / 32,070 ( < 1 % )                      ;
-; Total registers                 ; 81                                          ;
+; Logic utilization (in ALMs)     ; 195 / 32,070 ( < 1 % )                      ;
+; Total registers                 ; 78                                          ;
 ; Total pins                      ; 35 / 457 ( 8 % )                            ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0 / 4,065,280 ( 0 % )                       ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/05/2024 14:30:29 ;
+; Start date & time ; 06/05/2024 14:43:08 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; meikyuu             ;
 +-------------------+---------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 31239359189401.171760862925462         ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 31239359189401.171760938843757         ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                            ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)              ; <None>        ; --          ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                                   ; --            ; --          ; eda_simulation ;
@@ -104,10 +104,10 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:06     ; 1.0                     ; 1263 MB             ; 00:00:13                           ;
-; Fitter               ; 00:00:17     ; 1.1                     ; 3121 MB             ; 00:01:05                           ;
-; Assembler            ; 00:00:03     ; 1.0                     ; 1178 MB             ; 00:00:03                           ;
-; Total                ; 00:00:26     ; --                      ; --                  ; 00:01:21                           ;
+; Analysis & Synthesis ; 00:00:05     ; 1.0                     ; 1301 MB             ; 00:00:13                           ;
+; Fitter               ; 00:00:17     ; 1.1                     ; 3121 MB             ; 00:01:09                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 1177 MB             ; 00:00:03                           ;
+; Total                ; 00:00:25     ; --                      ; --                  ; 00:01:25                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
