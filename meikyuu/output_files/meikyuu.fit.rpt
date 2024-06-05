@@ -1,5 +1,5 @@
 Fitter report for meikyuu
-Wed Jun  5 14:23:18 2024
+Wed Jun  5 14:30:51 2024
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -62,7 +62,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Wed Jun  5 14:23:17 2024       ;
+; Fitter Status                   ; Successful - Wed Jun  5 14:30:51 2024       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; meikyuu                                     ;
 ; Top-level Entity Name           ; meikyuu                                     ;
@@ -162,7 +162,7 @@ refer to the applicable agreement for further details.
 ;     Processor 4            ;   1.1%      ;
 ;     Processor 5            ;   0.6%      ;
 ;     Processor 6            ;   0.6%      ;
-;     Processor 7            ;   0.6%      ;
+;     Processor 7            ;   0.5%      ;
 ;     Processor 8            ;   0.5%      ;
 ;     Processor 9            ;   0.5%      ;
 ;     Processor 10           ;   0.5%      ;
@@ -2132,12 +2132,12 @@ This will disable optimization of problematic paths and expose them for further 
 ; player:player|estado.IDLE       ; player:player|estado.IDLE    ; 0.701             ;
 ; player:player|move_timer[16]    ; player:player|y_pos[9]       ; 0.684             ;
 ; player:player|move_timer[13]    ; player:player|y_pos[9]       ; 0.644             ;
-; player:player|mapa_y_pos[0]     ; mapa_atual_reg[0]            ; 0.643             ;
+; player:player|mapa_y_pos[0]     ; mapa_atual_reg               ; 0.643             ;
 ; player:player|move_timer[17]    ; player:player|y_pos[9]       ; 0.640             ;
 ; player:player|move_timer[12]    ; player:player|y_pos[9]       ; 0.635             ;
-; player:player|mapa_x_pos[0]     ; mapa_atual_reg[0]            ; 0.630             ;
+; player:player|mapa_x_pos[0]     ; mapa_atual_reg               ; 0.630             ;
 ; player:player|y_pos[3]          ; player:player|y_pos[2]       ; 0.615             ;
-; player:player|mapa_y_pos[1]     ; mapa_atual_reg[0]            ; 0.612             ;
+; player:player|mapa_y_pos[1]     ; mapa_atual_reg               ; 0.612             ;
 ; player:player|move_timer[9]     ; player:player|y_pos[9]       ; 0.593             ;
 ; player:player|x_pos[5]          ; player:player|mapa_x_pos[0]  ; 0.584             ;
 ; player:player|x_pos[3]          ; player:player|mapa_x_pos[0]  ; 0.584             ;
@@ -2150,16 +2150,16 @@ This will disable optimization of problematic paths and expose them for further 
 ; player:player|x_pos[0]          ; player:player|mapa_x_pos[0]  ; 0.584             ;
 ; player:player|x_pos[4]          ; player:player|mapa_x_pos[0]  ; 0.584             ;
 ; player:player|estado.MOVE_RIGHT ; player:player|mapa_x_pos[0]  ; 0.584             ;
-; h_counter[6]                    ; mapa_atual_reg[0]            ; 0.583             ;
-; h_counter[7]                    ; mapa_atual_reg[0]            ; 0.580             ;
+; h_counter[6]                    ; mapa_atual_reg               ; 0.583             ;
+; h_counter[7]                    ; mapa_atual_reg               ; 0.580             ;
 ; player:player|move_timer[7]     ; player:player|y_pos[9]       ; 0.576             ;
 ; player:player|move_timer[14]    ; player:player|y_pos[9]       ; 0.573             ;
 ; player:player|move_timer[8]     ; player:player|y_pos[9]       ; 0.569             ;
 ; player:player|y_pos[9]          ; player:player|y_pos[5]       ; 0.554             ;
-; v_counter[8]                    ; mapa_atual_reg[0]            ; 0.552             ;
+; v_counter[8]                    ; mapa_atual_reg               ; 0.552             ;
 ; player:player|estado.MOVE_UP    ; player:player|estado.IDLE    ; 0.541             ;
-; v_counter[6]                    ; mapa_atual_reg[0]            ; 0.540             ;
-; v_counter[7]                    ; mapa_atual_reg[0]            ; 0.530             ;
+; v_counter[6]                    ; mapa_atual_reg               ; 0.540             ;
+; v_counter[7]                    ; mapa_atual_reg               ; 0.530             ;
 ; player:player|move_timer[5]     ; player:player|y_pos[9]       ; 0.529             ;
 ; player:player|y_pos[2]          ; player:player|y_pos[2]       ; 0.527             ;
 ; player:player|move_timer[6]     ; player:player|y_pos[9]       ; 0.526             ;
@@ -2174,30 +2174,30 @@ This will disable optimization of problematic paths and expose them for further 
 ; btn_left                        ; player:player|estado.MOVE_UP ; 0.500             ;
 ; btn_down                        ; player:player|estado.MOVE_UP ; 0.500             ;
 ; player:player|move_timer[10]    ; player:player|y_pos[9]       ; 0.496             ;
-; v_counter[1]                    ; mapa_atual_reg[0]            ; 0.467             ;
+; v_counter[1]                    ; mapa_atual_reg               ; 0.467             ;
 ; player:player|y_pos[1]          ; player:player|y_pos[1]       ; 0.449             ;
 ; btn_right                       ; player:player|estado.IDLE    ; 0.438             ;
 ; player:player|move_timer[2]     ; player:player|y_pos[9]       ; 0.407             ;
-; v_counter[9]                    ; mapa_atual_reg[0]            ; 0.404             ;
-; h_counter[9]                    ; mapa_atual_reg[0]            ; 0.403             ;
-; h_counter[8]                    ; mapa_atual_reg[0]            ; 0.403             ;
-; h_counter[5]                    ; mapa_atual_reg[0]            ; 0.403             ;
-; h_counter[4]                    ; mapa_atual_reg[0]            ; 0.403             ;
-; h_counter[3]                    ; mapa_atual_reg[0]            ; 0.403             ;
-; h_counter[2]                    ; mapa_atual_reg[0]            ; 0.403             ;
-; h_counter[1]                    ; mapa_atual_reg[0]            ; 0.403             ;
-; h_counter[0]                    ; mapa_atual_reg[0]            ; 0.403             ;
-; v_counter[5]                    ; mapa_atual_reg[0]            ; 0.393             ;
-; v_counter[4]                    ; mapa_atual_reg[0]            ; 0.393             ;
-; v_counter[3]                    ; mapa_atual_reg[0]            ; 0.393             ;
-; v_counter[2]                    ; mapa_atual_reg[0]            ; 0.393             ;
+; v_counter[9]                    ; mapa_atual_reg               ; 0.404             ;
+; h_counter[9]                    ; mapa_atual_reg               ; 0.403             ;
+; h_counter[8]                    ; mapa_atual_reg               ; 0.403             ;
+; h_counter[5]                    ; mapa_atual_reg               ; 0.403             ;
+; h_counter[4]                    ; mapa_atual_reg               ; 0.403             ;
+; h_counter[3]                    ; mapa_atual_reg               ; 0.403             ;
+; h_counter[2]                    ; mapa_atual_reg               ; 0.403             ;
+; h_counter[1]                    ; mapa_atual_reg               ; 0.403             ;
+; h_counter[0]                    ; mapa_atual_reg               ; 0.403             ;
+; v_counter[5]                    ; mapa_atual_reg               ; 0.393             ;
+; v_counter[4]                    ; mapa_atual_reg               ; 0.393             ;
+; v_counter[3]                    ; mapa_atual_reg               ; 0.393             ;
+; v_counter[2]                    ; mapa_atual_reg               ; 0.393             ;
 ; player:player|move_timer[18]    ; player:player|y_pos[9]       ; 0.390             ;
-; v_counter[0]                    ; mapa_atual_reg[0]            ; 0.381             ;
+; v_counter[0]                    ; mapa_atual_reg               ; 0.381             ;
 ; player:player|move_timer[11]    ; player:player|y_pos[9]       ; 0.351             ;
 ; player:player|move_timer[4]     ; player:player|y_pos[9]       ; 0.340             ;
 ; mapa_colision_reg               ; player:player|y_pos[1]       ; 0.320             ;
 ; player:player|mapa_x_pos[1]     ; player:player|mapa_x_pos[1]  ; 0.318             ;
-; mapa_atual_reg[0]               ; mapa_atual_reg[0]            ; 0.296             ;
+; mapa_atual_reg                  ; mapa_atual_reg               ; 0.296             ;
 ; player:player|estado.MOVE_DOWN  ; player:player|estado.IDLE    ; 0.230             ;
 ; player:player|y_pos[0]          ; player:player|y_pos[1]       ; 0.172             ;
 +---------------------------------+------------------------------+-------------------+
@@ -2462,7 +2462,7 @@ Info (170195): Router estimated average interconnect usage is 0% of the availabl
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
-Info (11888): Total time spent on timing analysis during the Fitter is 0.41 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.40 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -2471,10 +2471,10 @@ Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:02
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (144001): Generated suppressed messages file /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/output_files/meikyuu.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 229 warnings
-    Info: Peak virtual memory: 3125 megabytes
-    Info: Processing ended: Wed Jun  5 14:23:18 2024
-    Info: Elapsed time: 00:00:18
-    Info: Total CPU time (on all processors): 00:01:06
+    Info: Peak virtual memory: 3121 megabytes
+    Info: Processing ended: Wed Jun  5 14:30:51 2024
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:01:05
 
 
 +----------------------------+

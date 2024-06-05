@@ -1,5 +1,5 @@
 Analysis & Synthesis report for meikyuu
-Wed Jun  5 14:23:00 2024
+Wed Jun  5 14:30:34 2024
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -47,7 +47,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Jun  5 14:23:00 2024       ;
+; Analysis & Synthesis Status     ; Successful - Wed Jun  5 14:30:34 2024       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; meikyuu                                     ;
 ; Top-level Entity Name           ; meikyuu                                     ;
@@ -356,7 +356,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Wed Jun  5 14:22:55 2024
+    Info: Processing started: Wed Jun  5 14:30:28 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off meikyuu -c meikyuu
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
@@ -386,7 +386,6 @@ Warning (10230): Verilog HDL assignment warning at meikyuu.v(137): truncated val
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(138): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 138
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(139): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 139
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(141): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 141
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(143): truncated value with size 3 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 143
 Info (10041): Inferred latch for "mapa_global[0][0][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
 Info (10041): Inferred latch for "mapa_global[0][0][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
 Info (10041): Inferred latch for "mapa_global[0][0][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
@@ -1090,10 +1089,10 @@ Info (21057): Implemented 358 device resources after synthesis - the final resou
     Info (21058): Implemented 6 input pins
     Info (21059): Implemented 29 output pins
     Info (21061): Implemented 323 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 680 warnings
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 679 warnings
     Info: Peak virtual memory: 1278 megabytes
-    Info: Processing ended: Wed Jun  5 14:23:00 2024
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:14
+    Info: Processing ended: Wed Jun  5 14:30:34 2024
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:13
 
 

@@ -88,7 +88,7 @@ always @ (posedge CLOCK_25 or posedge reset) begin
   end
 end
 
-reg [2:0] mapa_atual_reg;
+reg mapa_atual_reg;
 reg mapa_colision_reg;
 
 always @(posedge CLOCK_25) begin
