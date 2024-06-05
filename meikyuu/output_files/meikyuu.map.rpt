@@ -1,5 +1,5 @@
 Analysis & Synthesis report for meikyuu
-Wed Jun  5 15:54:00 2024
+Wed Jun  5 16:42:08 2024
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -18,10 +18,9 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
  10. General Register Statistics
  11. Inverted Register Statistics
  12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Port Connectivity Checks: "player:player"
- 14. Post-Synthesis Netlist Statistics for Top Partition
- 15. Elapsed Time Per Partition
- 16. Analysis & Synthesis Messages
+ 13. Post-Synthesis Netlist Statistics for Top Partition
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
 
 
 
@@ -47,13 +46,13 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Jun  5 15:54:00 2024       ;
+; Analysis & Synthesis Status     ; Successful - Wed Jun  5 16:42:08 2024       ;
 ; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; meikyuu                                     ;
 ; Top-level Entity Name           ; meikyuu                                     ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 71                                          ;
+; Total registers                 ; 73                                          ;
 ; Total pins                      ; 35                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0                                           ;
@@ -186,25 +185,25 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+----------+
 ; Resource                                    ; Usage    ;
 +---------------------------------------------+----------+
-; Estimate of Logic utilization (ALMs needed) ; 220      ;
+; Estimate of Logic utilization (ALMs needed) ; 215      ;
 ;                                             ;          ;
-; Combinational ALUT usage for logic          ; 334      ;
-;     -- 7 input functions                    ; 15       ;
-;     -- 6 input functions                    ; 91       ;
-;     -- 5 input functions                    ; 55       ;
-;     -- 4 input functions                    ; 67       ;
-;     -- <=3 input functions                  ; 106      ;
+; Combinational ALUT usage for logic          ; 320      ;
+;     -- 7 input functions                    ; 13       ;
+;     -- 6 input functions                    ; 97       ;
+;     -- 5 input functions                    ; 50       ;
+;     -- 4 input functions                    ; 60       ;
+;     -- <=3 input functions                  ; 100      ;
 ;                                             ;          ;
-; Dedicated logic registers                   ; 71       ;
+; Dedicated logic registers                   ; 73       ;
 ;                                             ;          ;
 ; I/O pins                                    ; 35       ;
 ;                                             ;          ;
 ; Total DSP Blocks                            ; 0        ;
 ;                                             ;          ;
 ; Maximum fan-out node                        ; CLOCK_25 ;
-; Maximum fan-out                             ; 72       ;
-; Total fan-out                               ; 1802     ;
-; Average fan-out                             ; 3.79     ;
+; Maximum fan-out                             ; 74       ;
+; Total fan-out                               ; 1764     ;
+; Average fan-out                             ; 3.81     ;
 +---------------------------------------------+----------+
 
 
@@ -213,8 +212,8 @@ refer to the applicable agreement for further details.
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name    ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------+-------------+--------------+
-; |meikyuu                   ; 334 (150)           ; 71 (23)                   ; 0                 ; 0          ; 35   ; 0            ; |meikyuu               ; meikyuu     ; work         ;
-;    |player:player|         ; 184 (184)           ; 48 (48)                   ; 0                 ; 0          ; 0    ; 0            ; |meikyuu|player:player ; player      ; work         ;
+; |meikyuu                   ; 320 (132)           ; 73 (23)                   ; 0                 ; 0          ; 35   ; 0            ; |meikyuu               ; meikyuu     ; work         ;
+;    |player:player|         ; 188 (188)           ; 50 (50)                   ; 0                 ; 0          ; 0    ; 0            ; |meikyuu|player:player ; player      ; work         ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -238,12 +237,10 @@ Encoding Type:  One-Hot
 +---------------------------------------+--------------------+
 ; Register name                         ; Reason for Removal ;
 +---------------------------------------+--------------------+
-; player:player|mapa_x_pos[2]           ; Lost fanout        ;
-; player:player|mapa_y_pos[2]           ; Lost fanout        ;
 ; player:player|estado~4                ; Lost fanout        ;
 ; player:player|estado~5                ; Lost fanout        ;
 ; player:player|estado~6                ; Lost fanout        ;
-; Total Number of Removed Registers = 5 ;                    ;
+; Total Number of Removed Registers = 3 ;                    ;
 +---------------------------------------+--------------------+
 
 
@@ -252,12 +249,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 71    ;
+; Total registers                              ; 73    ;
 ; Number of registers using Synchronous Clear  ; 40    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 69    ;
+; Number of registers using Asynchronous Clear ; 71    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 49    ;
+; Number of registers using Clock Enable       ; 53    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -267,19 +264,20 @@ Encoding Type:  One-Hot
 +-----------------------------------------+---------+
 ; Inverted Register                       ; Fan out ;
 +-----------------------------------------+---------+
-; player:player|x_pos[5]                  ; 21      ;
-; player:player|x_pos[4]                  ; 20      ;
-; player:player|x_pos[2]                  ; 10      ;
-; player:player|x_pos[1]                  ; 11      ;
-; player:player|x_pos[0]                  ; 10      ;
-; player:player|x_pos[8]                  ; 25      ;
+; player:player|x_pos[5]                  ; 19      ;
+; player:player|x_pos[4]                  ; 18      ;
+; player:player|x_pos[2]                  ; 8       ;
+; player:player|x_pos[1]                  ; 8       ;
+; player:player|x_pos[0]                  ; 8       ;
+; player:player|x_pos[8]                  ; 23      ;
 ; player:player|x_pos[7]                  ; 25      ;
-; player:player|y_pos[3]                  ; 15      ;
-; player:player|y_pos[1]                  ; 11      ;
-; player:player|y_pos[8]                  ; 31      ;
-; player:player|mapa_y_pos[0]             ; 6       ;
-; player:player|mapa_x_pos[0]             ; 6       ;
-; Total number of inverted registers = 12 ;         ;
+; player:player|y_pos[3]                  ; 13      ;
+; player:player|y_pos[1]                  ; 10      ;
+; player:player|y_pos[8]                  ; 30      ;
+; player:player|mapa_y_pos[2]             ; 6       ;
+; player:player|mapa_y_pos[1]             ; 8       ;
+; player:player|mapa_y_pos[0]             ; 9       ;
+; Total number of inverted registers = 13 ;         ;
 +-----------------------------------------+---------+
 
 
@@ -288,23 +286,15 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
-; 64:1               ; 2 bits    ; 84 LEs        ; 20 LEs               ; 64 LEs                 ; Yes        ; |meikyuu|mapa_atual_reg               ;
-; 7:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; Yes        ; |meikyuu|player:player|x_pos[6]       ;
-; 8:1                ; 7 bits    ; 35 LEs        ; 28 LEs               ; 7 LEs                  ; Yes        ; |meikyuu|player:player|y_pos[7]       ;
-; 10:1               ; 19 bits   ; 114 LEs       ; 0 LEs                ; 114 LEs                ; Yes        ; |meikyuu|player:player|move_timer[16] ;
-; 7:1                ; 7 bits    ; 28 LEs        ; 21 LEs               ; 7 LEs                  ; Yes        ; |meikyuu|player:player|x_pos[0]       ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; Yes        ; |meikyuu|mapa_atual_reg               ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |meikyuu|player:player|mapa_x_pos[1]  ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; Yes        ; |meikyuu|player:player|x_pos[9]       ;
+; 8:1                ; 7 bits    ; 35 LEs        ; 28 LEs               ; 7 LEs                  ; Yes        ; |meikyuu|player:player|y_pos[0]       ;
+; 10:1               ; 19 bits   ; 114 LEs       ; 0 LEs                ; 114 LEs                ; Yes        ; |meikyuu|player:player|move_timer[18] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |meikyuu|player:player|mapa_y_pos[1]  ;
+; 7:1                ; 7 bits    ; 28 LEs        ; 21 LEs               ; 7 LEs                  ; Yes        ; |meikyuu|player:player|x_pos[2]       ;
 ; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; Yes        ; |meikyuu|player:player|y_pos[1]       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "player:player"                                                                                   ;
-+-------------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port              ; Type   ; Severity ; Details                                                                             ;
-+-------------------+--------+----------+-------------------------------------------------------------------------------------+
-; mapa_pos_x_out[2] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; mapa_pos_y_out[2] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -312,33 +302,33 @@ Encoding Type:  One-Hot
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 71                          ;
+; arriav_ff             ; 73                          ;
 ;     CLR               ; 9                           ;
 ;     CLR SCLR          ; 11                          ;
-;     ENA CLR           ; 20                          ;
+;     ENA               ; 2                           ;
+;     ENA CLR           ; 22                          ;
 ;     ENA CLR SCLR      ; 29                          ;
-;     plain             ; 2                           ;
-; arriav_lcell_comb     ; 338                         ;
+; arriav_lcell_comb     ; 324                         ;
 ;     arith             ; 109                         ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 71                          ;
 ;         3 data inputs ; 2                           ;
 ;         4 data inputs ; 32                          ;
 ;         5 data inputs ; 3                           ;
-;     extend            ; 15                          ;
-;         7 data inputs ; 15                          ;
-;     normal            ; 214                         ;
+;     extend            ; 13                          ;
+;         7 data inputs ; 13                          ;
+;     normal            ; 202                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 6                           ;
-;         2 data inputs ; 10                          ;
-;         3 data inputs ; 18                          ;
-;         4 data inputs ; 35                          ;
-;         5 data inputs ; 52                          ;
-;         6 data inputs ; 91                          ;
+;         2 data inputs ; 9                           ;
+;         3 data inputs ; 13                          ;
+;         4 data inputs ; 28                          ;
+;         5 data inputs ; 47                          ;
+;         6 data inputs ; 97                          ;
 ; boundary_port         ; 35                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.40                        ;
-; Average LUT depth     ; 4.93                        ;
+; Average LUT depth     ; 4.85                        ;
 +-----------------------+-----------------------------+
 
 
@@ -357,7 +347,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Wed Jun  5 15:53:55 2024
+    Info: Processing started: Wed Jun  5 16:42:03 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off meikyuu -c meikyuu
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
@@ -370,96 +360,426 @@ Info (12127): Elaborating entity "meikyuu" for the top level hierarchy
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(38): truncated value with size 32 to match size of target (8) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 38
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(39): truncated value with size 32 to match size of target (8) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 39
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(40): truncated value with size 32 to match size of target (8) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 40
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(80): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(83): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 83
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(168): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 168
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(169): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 169
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(170): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 170
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(171): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 171
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(85): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(88): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 88
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(173): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 173
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(174): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 174
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(175): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 175
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(176): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 176
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(177): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 177
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(178): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 178
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(179): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 179
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(180): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 180
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(181): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 181
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(182): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 182
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(183): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 183
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(184): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 184
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(185): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 185
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(186): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 186
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(187): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 187
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(188): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 188
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(189): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 189
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(190): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 190
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(191): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 191
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(192): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 192
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(193): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 193
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(194): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 194
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(195): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 195
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(196): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 196
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(197): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 197
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(198): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 198
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(199): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 199
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(200): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 200
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(201): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 201
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(202): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 202
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(203): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 203
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(204): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 204
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(205): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 205
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(206): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 206
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(207): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 207
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(208): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 208
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(209): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 209
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(210): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 210
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(211): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 211
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(212): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 212
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(213): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 213
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(214): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 214
 Warning (10230): Verilog HDL assignment warning at meikyuu.v(215): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 215
-Warning (10230): Verilog HDL assignment warning at meikyuu.v(216): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 216
-Info (10041): Inferred latch for "mapa_global[0][0][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][0][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][0][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][0][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][0][4]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][0][5]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][1][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][1][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][1][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][1][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][1][4]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][1][5]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][2][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][2][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][2][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][2][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][2][4]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[0][2][5]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][0][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][0][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][0][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][0][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][0][4]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][0][5]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][1][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][1][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][1][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][1][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][1][4]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][1][5]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][2][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][2][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][2][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][2][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][2][4]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[1][2][5]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][0][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][0][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][0][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][0][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][0][4]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][0][5]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][1][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][1][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][1][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][1][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][1][4]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][1][5]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][2][0]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][2][1]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][2][2]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][2][3]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][2][4]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
-Info (10041): Inferred latch for "mapa_global[2][2][5]" at meikyuu.v(80) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 80
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(217): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 217
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(218): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 218
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(220): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 220
+Warning (10230): Verilog HDL assignment warning at meikyuu.v(221): truncated value with size 32 to match size of target (1) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 221
+Info (10041): Inferred latch for "mapa_global[0][0][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][0][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][0][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][0][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][0][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][0][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][1][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][1][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][1][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][1][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][1][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][1][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][2][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][2][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][2][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][2][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][2][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][2][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][3][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][3][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][3][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][3][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][3][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][3][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][4][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][4][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][4][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][4][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][4][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][4][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][5][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][5][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][5][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][5][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][5][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][5][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][6][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][6][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][6][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][6][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][6][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][6][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][7][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][7][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][7][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][7][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][7][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[0][7][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][0][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][0][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][0][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][0][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][0][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][0][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][1][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][1][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][1][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][1][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][1][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][1][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][2][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][2][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][2][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][2][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][2][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][2][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][3][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][3][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][3][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][3][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][3][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][3][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][4][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][4][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][4][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][4][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][4][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][4][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][5][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][5][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][5][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][5][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][5][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][5][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][6][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][6][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][6][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][6][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][6][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][6][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][7][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][7][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][7][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][7][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][7][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[1][7][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][0][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][0][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][0][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][0][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][0][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][0][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][1][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][1][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][1][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][1][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][1][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][1][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][2][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][2][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][2][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][2][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][2][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][2][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][3][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][3][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][3][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][3][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][3][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][3][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][4][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][4][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][4][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][4][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][4][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][4][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][5][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][5][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][5][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][5][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][5][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][5][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][6][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][6][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][6][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][6][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][6][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][6][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][7][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][7][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][7][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][7][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][7][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[2][7][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][0][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][0][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][0][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][0][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][0][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][0][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][1][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][1][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][1][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][1][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][1][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][1][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][2][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][2][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][2][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][2][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][2][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][2][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][3][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][3][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][3][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][3][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][3][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][3][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][4][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][4][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][4][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][4][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][4][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][4][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][5][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][5][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][5][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][5][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][5][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][5][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][6][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][6][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][6][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][6][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][6][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][6][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][7][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][7][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][7][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][7][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][7][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[3][7][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][0][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][0][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][0][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][0][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][0][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][0][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][1][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][1][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][1][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][1][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][1][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][1][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][2][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][2][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][2][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][2][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][2][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][2][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][3][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][3][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][3][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][3][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][3][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][3][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][4][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][4][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][4][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][4][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][4][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][4][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][5][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][5][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][5][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][5][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][5][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][5][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][6][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][6][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][6][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][6][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][6][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][6][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][7][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][7][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][7][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][7][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][7][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[4][7][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][0][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][0][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][0][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][0][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][0][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][0][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][1][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][1][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][1][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][1][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][1][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][1][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][2][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][2][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][2][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][2][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][2][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][2][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][3][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][3][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][3][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][3][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][3][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][3][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][4][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][4][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][4][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][4][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][4][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][4][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][5][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][5][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][5][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][5][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][5][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][5][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][6][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][6][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][6][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][6][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][6][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][6][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][7][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][7][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][7][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][7][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][7][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[5][7][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][0][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][0][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][0][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][0][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][0][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][0][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][1][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][1][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][1][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][1][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][1][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][1][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][2][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][2][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][2][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][2][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][2][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][2][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][3][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][3][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][3][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][3][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][3][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][3][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][4][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][4][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][4][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][4][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][4][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][4][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][5][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][5][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][5][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][5][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][5][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][5][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][6][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][6][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][6][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][6][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][6][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][6][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][7][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][7][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][7][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][7][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][7][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[6][7][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][0][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][0][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][0][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][0][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][0][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][0][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][1][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][1][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][1][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][1][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][1][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][1][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][2][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][2][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][2][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][2][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][2][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][2][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][3][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][3][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][3][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][3][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][3][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][3][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][4][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][4][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][4][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][4][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][4][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][4][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][5][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][5][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][5][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][5][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][5][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][5][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][6][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][6][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][6][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][6][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][6][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][6][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][7][0]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][7][1]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][7][2]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][7][3]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][7][4]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
+Info (10041): Inferred latch for "mapa_global[7][7][5]" at meikyuu.v(85) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 85
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "mapa_global" into its bus
 Info (12128): Elaborating entity "player" for hierarchy "player:player" File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 60
 Warning (10230): Verilog HDL assignment warning at player.v(20): truncated value with size 32 to match size of target (10) File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/player.v Line: 20
@@ -498,7 +818,7 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 13
     Warning (13410): Pin "VGA_BLANK_N" is stuck at VCC File: /home/ec2020-ceb/ra165429/mc613/2024s1-mc613-projeto-futari/meikyuu/meikyuu.v Line: 14
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 5 registers lost all their fanouts during netlist optimizations.
+Info (17049): 3 registers lost all their fanouts during netlist optimizations.
 Warning (20013): Ignored 571 assignments for entity "DE1_SoC" -- entity does not exist in design
     Warning (20014): Assignment for entity set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_ADDR[0] -entity DE1_SoC was ignored
     Warning (20014): Assignment for entity set_instance_assignment -name PACKAGE_SKEW_COMPENSATION OFF -to HPS_DDR3_ADDR[10] -entity DE1_SoC was ignored
@@ -1123,13 +1443,13 @@ Warning (20013): Ignored 24 assignments for entity "top3" -- entity does not exi
     Warning (20014): Assignment for entity set_global_assignment -name PARTITION_ENABLE_STRICT_PRESERVATION OFF -entity top3 -section_id Top was ignored
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 408 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 394 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 6 input pins
     Info (21059): Implemented 29 output pins
-    Info (21061): Implemented 373 logic cells
+    Info (21061): Implemented 359 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 698 warnings
-    Info: Peak virtual memory: 1276 megabytes
-    Info: Processing ended: Wed Jun  5 15:54:00 2024
+    Info: Peak virtual memory: 1279 megabytes
+    Info: Processing ended: Wed Jun  5 16:42:08 2024
     Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:14
 

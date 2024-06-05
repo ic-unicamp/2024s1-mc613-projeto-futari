@@ -20,8 +20,8 @@ module player (
 reg [9:0] x_pos = 96 + 48 - 16 + 311;
 reg [9:0] y_pos  = 2 + 33 + 231;
 
-reg [2:0] mapa_x_pos = 1;
-reg [2:0] mapa_y_pos = 1;
+reg [2:0] mapa_x_pos = 0;
+reg [2:0] mapa_y_pos = 7;
 
 
 reg [18:0] move_timer;
@@ -44,8 +44,8 @@ always @ (posedge CLOCK_25 or posedge reset) begin
         y_pos = 2 + 33 + 231;
         estado = IDLE;
         move_timer = 0;
-        mapa_x_pos = 1;
-        mapa_y_pos = 1;
+        mapa_x_pos = 0;
+        mapa_y_pos = 7;
 
     end else begin
         x_pos = x_pos_in;

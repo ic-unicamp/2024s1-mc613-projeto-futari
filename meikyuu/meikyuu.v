@@ -28,7 +28,7 @@ wire enable_v_counter;
 wire active;
 wire active_cube;
 
-reg [5:0] mapa_global [2:0][2:0];
+reg [5:0] mapa_global [7:0][7:0];
 
 
 wire [2:0] mapa_x_pos;
@@ -72,9 +72,14 @@ always @ (posedge CLOCK_25 or posedge reset) begin
   if(reset) begin
     h_counter = 0;
     v_counter = 0;
-    mapa_global[0][0] = 10; mapa_global[0][1] = 11; mapa_global[0][2] = 08;
-    mapa_global[1][0] = 14; mapa_global[1][1] = 06; mapa_global[1][2] = 12;
-    mapa_global[2][0] = 03; mapa_global[2][1] = 13; mapa_global[2][2] = 02;
+    mapa_global[0][0] = 10; mapa_global[0][1] = 01; mapa_global[0][2] = 01; mapa_global[0][3] = 05; mapa_global[0][4] = 10; mapa_global[0][5] = 01; mapa_global[0][6] = 01; mapa_global[0][7] = 05;
+    mapa_global[1][0] = 07; mapa_global[1][1] = 07; mapa_global[1][2] = 15; mapa_global[1][3] = 00; mapa_global[1][4] = 11; mapa_global[1][5] = 08; mapa_global[1][6] = 10; mapa_global[1][7] = 00;
+    mapa_global[2][0] = 03; mapa_global[2][1] = 13; mapa_global[2][2] = 11; mapa_global[2][3] = 13; mapa_global[2][4] = 01; mapa_global[2][5] = 04; mapa_global[2][6] = 01; mapa_global[2][7] = 12;
+    mapa_global[3][0] = 07; mapa_global[3][1] = 11; mapa_global[3][2] = 00; mapa_global[3][3] = 10; mapa_global[3][4] = 11; mapa_global[3][5] = 00; mapa_global[3][6] = 10; mapa_global[3][7] = 00;
+    mapa_global[4][0] = 00; mapa_global[4][1] = 06; mapa_global[4][2] = 14; mapa_global[4][3] = 01; mapa_global[4][4] = 01; mapa_global[4][5] = 02; mapa_global[4][6] = 10; mapa_global[4][7] = 12;
+    mapa_global[5][0] = 03; mapa_global[5][1] = 01; mapa_global[5][2] = 06; mapa_global[5][3] = 08; mapa_global[5][4] = 04; mapa_global[5][5] = 01; mapa_global[5][6] = 00; mapa_global[5][7] = 00;
+    mapa_global[6][0] = 01; mapa_global[6][1] = 11; mapa_global[6][2] = 00; mapa_global[6][3] = 10; mapa_global[6][4] = 00; mapa_global[6][5] = 08; mapa_global[6][6] = 00; mapa_global[6][7] = 00;
+    mapa_global[7][0] = 10; mapa_global[7][1] = 01; mapa_global[7][2] = 13; mapa_global[7][3] = 01; mapa_global[7][4] = 02; mapa_global[7][5] = 08; mapa_global[7][6] = 09; mapa_global[7][7] = 09;
 
   end else begin
     h_counter = h_counter + 1;
