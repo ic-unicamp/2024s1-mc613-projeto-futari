@@ -28,7 +28,7 @@ wire enable_v_counter;
 wire active;
 wire active_cube;
 
-reg [3:0] mapa_global [2:0][2:0];
+reg [5:0] mapa_global [2:0][2:0];
 
 
 wire [2:0] mapa_x_pos;
@@ -72,9 +72,9 @@ always @ (posedge CLOCK_25 or posedge reset) begin
   if(reset) begin
     h_counter = 0;
     v_counter = 0;
-    mapa_global[0][0] = 8'h04; mapa_global[0][1] = 8'h04; mapa_global[0][2] = 8'h05;
-    mapa_global[1][0] = 8'h00; mapa_global[1][1] = 8'h06; mapa_global[1][2] = 8'h00;
-    mapa_global[2][0] = 8'h03; mapa_global[2][1] = 8'h03; mapa_global[2][2] = 8'h02;
+    mapa_global[0][0] = 10; mapa_global[0][1] = 11; mapa_global[0][2] = 08;
+    mapa_global[1][0] = 00; mapa_global[1][1] = 06; mapa_global[1][2] = 00;
+    mapa_global[2][0] = 03; mapa_global[2][1] = 09; mapa_global[2][2] = 02;
 
   end else begin
     h_counter = h_counter + 1;
@@ -127,6 +127,28 @@ always @(posedge CLOCK_25) begin
     6: begin
       mapa_atual_reg = mapa_encruzilhada;
 		  mapa_colision_reg = mapa_encruzilhada_colision;
+    end
+    // mapa fechado up
+    7: begin
+      mapa_atual_reg = mapa_fechado_up;
+      mapa_colision_reg = mapa_fechado_up_colision;
+    end
+    8: begin
+      mapa_atual_reg = mapa_fechado_right;
+      mapa_colision_reg = mapa_fechado_right_colision;
+    end
+    9: begin
+      mapa_atual_reg = mapa_fechado_down;
+      mapa_colision_reg = mapa_fechado_down_colision;
+    end
+    10: begin
+      mapa_atual_reg = mapa_fechado_left;
+      mapa_colision_reg = mapa_fechado_left_colision;
+    end
+    // Mapa "T"
+    11: begin
+      mapa_atual_reg = mapa_T_up;
+      mapa_colision_reg = mapa_T_up_colision;
     end
   endcase
 end
