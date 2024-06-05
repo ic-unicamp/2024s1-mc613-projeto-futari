@@ -73,8 +73,8 @@ always @ (posedge CLOCK_25 or posedge reset) begin
     h_counter = 0;
     v_counter = 0;
     mapa_global[0][0] = 10; mapa_global[0][1] = 11; mapa_global[0][2] = 08;
-    mapa_global[1][0] = 00; mapa_global[1][1] = 06; mapa_global[1][2] = 00;
-    mapa_global[2][0] = 03; mapa_global[2][1] = 09; mapa_global[2][2] = 02;
+    mapa_global[1][0] = 14; mapa_global[1][1] = 06; mapa_global[1][2] = 12;
+    mapa_global[2][0] = 03; mapa_global[2][1] = 13; mapa_global[2][2] = 02;
 
   end else begin
     h_counter = h_counter + 1;
@@ -149,6 +149,18 @@ always @(posedge CLOCK_25) begin
     11: begin
       mapa_atual_reg = mapa_T_up;
       mapa_colision_reg = mapa_T_up_colision;
+    end
+    12: begin
+      mapa_atual_reg = mapa_T_right;
+      mapa_colision_reg = mapa_T_right_colision;
+    end
+    13: begin
+      mapa_atual_reg = mapa_T_down;
+      mapa_colision_reg = mapa_T_down_colision;
+    end
+    14: begin
+      mapa_atual_reg = mapa_T_left;
+      mapa_colision_reg = mapa_T_left_colision;
     end
   endcase
 end
