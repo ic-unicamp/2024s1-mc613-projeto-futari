@@ -193,11 +193,33 @@ assign active_cube = (((v_counter > y_pos) && (h_counter > x_pos) && (v_counter 
 integer i;
 integer j;
 
-for (i = 0; i < 5; i = i + 1) begin
-  for (j = 0; j < 5; j = j + 1) begin
-    assign active_rain = (((v_counter > (128*j) + 2) && (h_counter > (96*i) + 96) && (v_counter <= (128*j) + 128 + 2) && (h_counter <= (96*i) + 96 + 96))) ? 1 : 0;
-  end
-end
+reg active_rain00 = ((v_counter > 128 + 2) && (h_counter > 96 + 96) && (v_counter <= (128 + 128 + 2) && (h_counter <= 96 + 96 + 96))) ? 1 : 0;
+reg active_rain01 = ((v_counter > 128*2 + 2) && (h_counter > 96 + 96) && (v_counter <= (128*2 + 128 + 2) && (h_counter <= 96 + 96 + 96))) ? 1 : 0;
+reg active_rain02 = ((v_counter > 128*3 + 2) && (h_counter > 96 + 96) && (v_counter <= (128*3 + 128 + 2) && (h_counter <= 96 + 96 + 96))) ? 1 : 0;
+reg active_rain03 = ((v_counter > 128*4 + 2) && (h_counter > 96 + 96) && (v_counter <= (128*4 + 128 + 2) && (h_counter <= 96 + 96 + 96))) ? 1 : 0;
+reg active_rain04 = ((v_counter > 128*5 + 2) && (h_counter > 96 + 96) && (v_counter <= (128*5 + 128 + 2) && (h_counter <= 96 + 96 + 96))) ? 1 : 0;
+reg active_rain10 = ((v_counter > 128 + 2) && (h_counter > 96 + 96*2) && (v_counter <= (128 + 128 + 2) && (h_counter <= 96 + 96*2 + 96))) ? 1 : 0;
+reg active_rain11 = ((v_counter > 128*2 + 2) && (h_counter > 96 + 96*2) && (v_counter <= (128*2 + 128 + 2) && (h_counter <= 96 + 96*2 + 96))) ? 1 : 0;
+reg active_rain12 = ((v_counter > 128*3 + 2) && (h_counter > 96 + 96*2) && (v_counter <= (128*3 + 128 + 2) && (h_counter <= 96 + 96*2 + 96))) ? 1 : 0;
+reg active_rain13 = ((v_counter > 128*4 + 2) && (h_counter > 96 + 96*2) && (v_counter <= (128*4 + 128 + 2) && (h_counter <= 96 + 96*2 + 96))) ? 1 : 0;
+reg active_rain14 = ((v_counter > 128*5 + 2) && (h_counter > 96 + 96*2) && (v_counter <= (128*5 + 128 + 2) && (h_counter <= 96 + 96*2 + 96))) ? 1 : 0;
+reg active_rain20 = ((v_counter > 128 + 2) && (h_counter > 96 + 96*3) && (v_counter <= (128 + 128 + 2) && (h_counter <= 96 + 96*3 + 96))) ? 1 : 0;
+reg active_rain21 = ((v_counter > 128*2 + 2) && (h_counter > 96 + 96*3) && (v_counter <= (128*2 + 128 + 2) && (h_counter <= 96 + 96*3 + 96))) ? 1 : 0;
+reg active_rain22 = ((v_counter > 128*3 + 2) && (h_counter > 96 + 96*3) && (v_counter <= (128*3 + 128 + 2) && (h_counter <= 96 + 96*3 + 96))) ? 1 : 0;
+reg active_rain23 = ((v_counter > 128*4 + 2) && (h_counter > 96 + 96*3) && (v_counter <= (128*4 + 128 + 2) && (h_counter <= 96 + 96*3 + 96))) ? 1 : 0;
+reg active_rain24 = ((v_counter > 128*5 + 2) && (h_counter > 96 + 96*3) && (v_counter <= (128*5 + 128 + 2) && (h_counter <= 96 + 96*3 + 96))) ? 1 : 0;
+reg active_rain30 = ((v_counter > 128 + 2) && (h_counter > 96 + 96*4) && (v_counter <= (128 + 128 + 2) && (h_counter <= 96 + 96*4 + 96))) ? 1 : 0;
+reg active_rain31 = ((v_counter > 128*2 + 2) && (h_counter > 96 + 96*4) && (v_counter <= (128*2 + 128 + 2) && (h_counter <= 96 + 96*4 + 96))) ? 1 : 0;
+reg active_rain32 = ((v_counter > 128*3 + 2) && (h_counter > 96 + 96*4) && (v_counter <= (128*3 + 128 + 2) && (h_counter <= 96 + 96*4 + 96))) ? 1 : 0;
+reg active_rain33 = ((v_counter > 128*4 + 2) && (h_counter > 96 + 96*4) && (v_counter <= (128*4 + 128 + 2) && (h_counter <= 96 + 96*4 + 96))) ? 1 : 0;
+reg active_rain34 = ((v_counter > 128*5 + 2) && (h_counter > 96 + 96*4) && (v_counter <= (128*5 + 128 + 2) && (h_counter <= 96 + 96*4 + 96))) ? 1 : 0;
+reg active_rain40 = ((v_counter > 128 + 2) && (h_counter > 96 + 96*5) && (v_counter <= (128 + 128 + 2) && (h_counter <= 96 + 96*5 + 96))) ? 1 : 0;
+reg active_rain41 = ((v_counter > 128*2 + 2) && (h_counter > 96 + 96*5) && (v_counter <= (128*2 + 128 + 2) && (h_counter <= 96 + 96*5 + 96))) ? 1 : 0;
+reg active_rain42 = ((v_counter > 128*3 + 2) && (h_counter > 96 + 96*5) && (v_counter <= (128*3 + 128 + 2) && (h_counter <= 96 + 96*5 + 96))) ? 1 : 0;
+reg active_rain43 = ((v_counter > 128*4 + 2) && (h_counter > 96 + 96*5) && (v_counter <= (128*4 + 128 + 2) && (h_counter <= 96 + 96*5 + 96))) ? 1 : 0;
+reg active_rain44 = ((v_counter > 128*5 + 2) && (h_counter > 96 + 96*5) && (v_counter <= (128*5 + 128 + 2) && (h_counter <= 96 + 96*5 + 96))) ? 1 : 0;
+
+assign active_rain = active_rain00 || active_rain01 || active_rain02 || active_rain03 || active_rain04 || active_rain10 || active_rain11 || active_rain12 || active_rain13 || active_rain14 || active_rain20 || active_rain21 || active_rain22 || active_rain23 || active_rain24 || active_rain30 || active_rain31 || active_rain32 || active_rain33 || active_rain34 || active_rain40 || active_rain41 || active_rain42 || active_rain43 || active_rain44;
 
 wire mapa_vertical = active && (h_counter < 96 + 100 || h_counter > 96 + 640 - 100) ? 1 : 0; // Parades retas horizontais
 wire mapa_vertical_colision = (x_pos < 96 + 100 || x_pos + 11 > 96 + 640 - 100) ? 1 : 0;
