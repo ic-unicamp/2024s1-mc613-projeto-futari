@@ -35,13 +35,15 @@ wire [2:0] mapa_x_pos;
 wire [2:0] mapa_y_pos;
 
 
-assign VGA_R = active_cube ? 8'd153 : mapa_atual ? 8'd36 : 0;
-assign VGA_G = active_cube ? 8'd51 : mapa_atual ? 8'd60 : 0;
-assign VGA_B = active_cube ? 8'd153 : mapa_atual ? 0 : 0;
+assign VGA_R = active_rain ? 8'd70 : active_cube ? 8'd115 : mapa_atual ? 8'd36 : 0;
+assign VGA_G = active_rain ? 8'd78 : active_cube ? 8'd000 : mapa_atual ? 8'd60 : 0;
+assign VGA_B = active_rain ? 8'd80 : active_cube ? 8'd160 : mapa_atual ? 0 : 0;
 
 assign VGA_SYNC_N = 0;
 assign VGA_BLANK_N = 1;
 assign VGA_CLK = CLOCK_25;
+
+wire active_draw;
 
 player player(
   .CLOCK_25(CLOCK_25),
@@ -53,10 +55,23 @@ player player(
   .btn_down(btn_down),
   .btn_left(btn_left),
   .btn_right(btn_right),
+  .h_counter(h_counter),
+  .v_counter(v_counter),
   .x_pos_out(x_pos),
   .y_pos_out(y_pos),
   .mapa_pos_x_out(mapa_x_pos),
   .mapa_pos_y_out(mapa_y_pos),
+  .active_draw(active_draw),
+);
+
+wire active_rain;
+
+rain rain(
+  .CLOCK_25(CLOCK_25),
+  .reset(reset),
+  .h_counter(h_counter),
+  .v_counter(v_counter),
+  .active_rain(active_rain),
 );
 
 always @(posedge CLOCK_50 or posedge reset) begin
@@ -173,52 +188,61 @@ end
 assign VGA_HS = (h_counter <= 96) ? 1 : 0;
 assign VGA_VS = (v_counter <= 2) ? 1 : 0;
 assign active = ((v_counter > 2) && (h_counter > 96)) ? 1 : 0;
-assign active_cube = ((v_counter > y_pos) && (h_counter > x_pos) && (v_counter <= y_pos + 16) && (h_counter <= x_pos + 16)) ? 1 : 0;
+assign active_cube = (((v_counter > y_pos) && (h_counter > x_pos) && (v_counter <= y_pos + 20) && (h_counter <= x_pos + 11)) && active_draw) ? 1 : 0;
+
+integer i;
+integer j;
+
+for (i = 0; i < 5; i = i + 1) begin
+  for (j = 0; j < 5; j = j + 1) begin
+    assign active_rain = (((v_counter > (128*j) + 2) && (h_counter > (96*i) + 96) && (v_counter <= (128*j) + 128 + 2) && (h_counter <= (96*i) + 96 + 96))) ? 1 : 0;
+  end
+end
 
 wire mapa_vertical = active && (h_counter < 96 + 100 || h_counter > 96 + 640 - 100) ? 1 : 0; // Parades retas horizontais
-wire mapa_vertical_colision = (x_pos < 96 + 100 || x_pos + 16 > 96 + 640 - 100) ? 1 : 0;
+wire mapa_vertical_colision = (x_pos < 96 + 100 || x_pos + 11 > 96 + 640 - 100) ? 1 : 0;
 
 wire mapa_horizontal = active && (v_counter < 2 + 100 || v_counter > 2 + 480 - 100) ? 1 : 0; // Parades retas verticais
-wire mapa_horizontal_colision = (y_pos < 2 + 100 || y_pos + 16 > 2 + 480 - 100) ? 1 : 0;
+wire mapa_horizontal_colision = (y_pos < 2 + 100 || y_pos + 20 > 2 + 480 - 100) ? 1 : 0;
 
 wire mapa_L1 = active && ((h_counter < 96 + 100 && v_counter < 2 + 100) || (v_counter > 2 + 480 - 100) || (h_counter > 96 + 640 - 100)) ? 1 : 0; //Parede em L
-wire mapa_L1_colision = (x_pos < 96 + 100 && y_pos < 2 + 100) || (y_pos + 16 > 2 + 480 - 100) || (x_pos + 16 > 96 + 640 - 100) ? 1 : 0;
+wire mapa_L1_colision = (x_pos < 96 + 100 && y_pos < 2 + 100) || (y_pos + 20 > 2 + 480 - 100) || (x_pos + 11 > 96 + 640 - 100) ? 1 : 0;
 
 wire mapa_L2 = active && ((h_counter > 96 + 640 - 100 && v_counter < 2 + 100) || (v_counter > 2 + 480 - 100) || (h_counter < 96 + 100)) ? 1 : 0; //Parede em L
-wire mapa_L2_colision = (x_pos + 16 > 96 + 640 - 100 && y_pos < 2 + 100) || (y_pos + 16 > 2 + 480 - 100) || (x_pos < 96 + 100) ? 1 : 0;
+wire mapa_L2_colision = (x_pos + 11 > 96 + 640 - 100 && y_pos < 2 + 100) || (y_pos + 20 > 2 + 480 - 100) || (x_pos < 96 + 100) ? 1 : 0;
 
 wire mapa_L3 = active && ((h_counter > 96 + 640 - 100 && v_counter > 2 + 480 - 100) || (v_counter < 2 + 100) || (h_counter < 96 + 100)) ? 1 : 0; //Parede em L
-wire mapa_L3_colision = (x_pos + 16 > 96 + 640 - 100 && y_pos + 16 > 2 + 480 - 100) || (y_pos < 2 + 100) || (x_pos < 96 + 100) ? 1 : 0;
+wire mapa_L3_colision = (x_pos + 11 > 96 + 640 - 100 && y_pos + 20 > 2 + 480 - 100) || (y_pos < 2 + 100) || (x_pos < 96 + 100) ? 1 : 0;
 
 wire mapa_L4 = active && ((h_counter < 96 + 100 && v_counter > 2 + 480 - 100) || (v_counter < 2 + 100) || (h_counter > 96 + 640 - 100)) ? 1 : 0; //Parede em L
-wire mapa_L4_colision = (x_pos < 96 + 100 && y_pos + 16 > 2 + 480 - 100) || (y_pos < 2 + 100) || (x_pos + 16 > 96 + 640 - 100) ? 1 : 0;
+wire mapa_L4_colision = (x_pos < 96 + 100 && y_pos + 20 > 2 + 480 - 100) || (y_pos < 2 + 100) || (x_pos + 11 > 96 + 640 - 100) ? 1 : 0;
 
 wire mapa_encruzilhada = active && ((h_counter < 96 + 100 || h_counter > 96 + 640 - 100) && (v_counter < 2 + 100 || v_counter > 2 + 480 - 100)) ? 1 : 0; // Encruzilhada
-wire mapa_encruzilhada_colision = (x_pos < 96 + 100 || x_pos + 16 > 96 + 640 - 100) && (y_pos < 2 + 100 || y_pos + 16 > 2 + 480 - 100) ? 1 : 0;
+wire mapa_encruzilhada_colision = (x_pos < 96 + 100 || x_pos + 11 > 96 + 640 - 100) && (y_pos < 2 + 100 || y_pos + 20 > 2 + 480 - 100) ? 1 : 0;
 
 wire mapa_fechado_up = active && (v_counter < 2 + 100 || h_counter < 96 + 100 || h_counter > 96 + 640 - 100) ? 1 : 0; // Parede fechada em cima
-wire mapa_fechado_up_colision = (y_pos < 2 + 100 || x_pos < 96 + 100 || x_pos + 16 > 96 + 640 - 100) ? 1 : 0;
+wire mapa_fechado_up_colision = (y_pos < 2 + 100 || x_pos < 96 + 100 || x_pos + 11 > 96 + 640 - 100) ? 1 : 0;
 
 wire mapa_fechado_right = active && (h_counter > 96 + 640 - 100 || v_counter < 2 + 100 || v_counter > 2 + 480 - 100) ? 1 : 0; // Parede fechada na direita
-wire mapa_fechado_right_colision = (x_pos + 16 > 96 + 640 - 100 || y_pos < 2 + 100 || y_pos + 16 > 2 + 480 - 100) ? 1 : 0;
+wire mapa_fechado_right_colision = (x_pos + 11 > 96 + 640 - 100 || y_pos < 2 + 100 || y_pos + 20 > 2 + 480 - 100) ? 1 : 0;
 
 wire mapa_fechado_down = active && (v_counter > 2 + 480 - 100 || h_counter < 96 + 100 || h_counter > 96 + 640 - 100) ? 1 : 0; // Parede fechada em baixo
-wire mapa_fechado_down_colision = (y_pos + 16 > 2 + 480 - 100 || x_pos < 96 + 100 || x_pos + 16 > 96 + 640 - 100) ? 1 : 0;
+wire mapa_fechado_down_colision = (y_pos + 20 > 2 + 480 - 100 || x_pos < 96 + 100 || x_pos + 11 > 96 + 640 - 100) ? 1 : 0;
 
 wire mapa_fechado_left = active && (h_counter < 96 + 100 || v_counter < 2 + 100 || v_counter > 2 + 480 - 100) ? 1 : 0; // Parede fechada na esquerda
-wire mapa_fechado_left_colision = (x_pos < 96 + 100 || y_pos < 2 + 100 || y_pos + 16 > 2 + 480 - 100) ? 1 : 0;
+wire mapa_fechado_left_colision = (x_pos < 96 + 100 || y_pos < 2 + 100 || y_pos + 20 > 2 + 480 - 100) ? 1 : 0;
 
 wire mapa_T_up = active && (v_counter < 2 + 100 || (v_counter > 2 + 480 - 100 && h_counter < 96 + 100) || (v_counter > 2 + 480 - 100 && h_counter > 96 + 640 - 100)) ? 1 : 0; // Parede em T
-wire mapa_T_up_colision = (y_pos < 2 + 100 || (y_pos + 16 > 2 + 480 - 100 && x_pos < 96 + 100) || (y_pos + 16 > 2 + 480 - 100 && x_pos + 16 > 96 + 640 - 100)) ? 1 : 0;
+wire mapa_T_up_colision = (y_pos < 2 + 100 || (y_pos + 20 > 2 + 480 - 100 && x_pos < 96 + 100) || (y_pos + 20 > 2 + 480 - 100 && x_pos + 11 > 96 + 640 - 100)) ? 1 : 0;
 
 wire mapa_T_right = active && (h_counter > 96 + 640 - 100 || (h_counter < 96 + 100 && v_counter < 2 + 100) || (h_counter < 96 + 100 && v_counter > 2 + 480 - 100)) ? 1 : 0; // Parede em T
-wire mapa_T_right_colision = (x_pos + 16 > 96 + 640 - 100 || (x_pos < 96 + 100 && y_pos < 2 + 100) || (x_pos < 96 + 100 && y_pos + 16 > 2 + 480 - 100)) ? 1 : 0;
+wire mapa_T_right_colision = (x_pos + 11 > 96 + 640 - 100 || (x_pos < 96 + 100 && y_pos < 2 + 100) || (x_pos < 96 + 100 && y_pos + 20 > 2 + 480 - 100)) ? 1 : 0;
 
 wire mapa_T_down = active && (v_counter > 2 + 480 - 100 || (v_counter < 2 + 100 && h_counter < 96 + 100) || (v_counter < 2 + 100 && h_counter > 96 + 640 - 100)) ? 1 : 0; // Parede em T
-wire mapa_T_down_colision = (y_pos + 16 > 2 + 480 - 100 || (y_pos < 2 + 100 && x_pos < 96 + 100) || (y_pos < 2 + 100 && x_pos + 16 > 96 + 640 - 100)) ? 1 : 0;
+wire mapa_T_down_colision = (y_pos + 20 > 2 + 480 - 100 || (y_pos < 2 + 100 && x_pos < 96 + 100) || (y_pos < 2 + 100 && x_pos + 11 > 96 + 640 - 100)) ? 1 : 0;
 
 wire mapa_T_left = active && (h_counter < 96 + 100 || (h_counter > 96 + 640 - 100 && v_counter < 2 + 100) || (h_counter > 96 + 640 - 100 && v_counter > 2 + 480 - 100)) ? 1 : 0; // Parede em T
-wire mapa_T_left_colision = (x_pos < 96 + 100 || (x_pos + 16 > 96 + 640 - 100 && y_pos < 2 + 100) || (x_pos + 16 > 96 + 640 - 100 && y_pos + 16 > 2 + 480 - 100)) ? 1 : 0;
+wire mapa_T_left_colision = (x_pos < 96 + 100 || (x_pos + 11 > 96 + 640 - 100 && y_pos < 2 + 100) || (x_pos + 11 > 96 + 640 - 100 && y_pos + 20 > 2 + 480 - 100)) ? 1 : 0;
 
 wire mapa_atual = mapa_atual_reg;
 wire mapa_colision = mapa_colision_reg;
