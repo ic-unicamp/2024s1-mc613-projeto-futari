@@ -8,24 +8,26 @@ module rain (
     output active_rain
 );
 
-reg [32:0] rain_timer;
-localparam MAX_TIMER = 200000;
-
 reg rain_draw[95:0][128:0];
 
-reg zone[4:0];
+reg [9:0] x_pos_reg = 96 + 48;
+reg [9:0] y_pos_reg = 2 + 33;
 
-reg x_pos_reg = 96;
-reg y_pos_reg = 2;
+reg [9:0] x_limite = 96 + 48;
+reg [9:0] y_limite = 2 + 33;
 
-assign x_pos = x_pos_reg;
-assign y_pos = y_pos_reg;
+
+reg [1:0] rain_frame;
+reg [32:0] rain_timer = 0;
+localparam MAX_TIMER = 3000000;
 
 always @(posedge CLOCK_25 or posedge reset) begin
     if(reset) begin
         rain_timer = 0;
-        x_pos_reg = 96;
-        y_pos_reg = 2;
+        x_pos_reg = 96 + 48;
+        y_pos_reg = 2 + 33;
+        rain_timer = 0;
+			
         rain_draw[0][0] = 0;rain_draw[1][0] = 0;rain_draw[2][0] = 0;rain_draw[3][0] = 0;rain_draw[4][0] = 0;rain_draw[5][0] = 0;rain_draw[6][0] = 0;rain_draw[7][0] = 0;rain_draw[8][0] = 0;rain_draw[9][0] = 0;rain_draw[10][0] = 0;rain_draw[11][0] = 0;rain_draw[12][0] = 0;rain_draw[13][0] = 0;rain_draw[14][0] = 0;rain_draw[15][0] = 0;rain_draw[16][0] = 0;rain_draw[17][0] = 0;rain_draw[18][0] = 0;rain_draw[19][0] = 0;rain_draw[20][0] = 0;rain_draw[21][0] = 0;rain_draw[22][0] = 0;rain_draw[23][0] = 0;rain_draw[24][0] = 0;rain_draw[25][0] = 0;rain_draw[26][0] = 0;rain_draw[27][0] = 0;rain_draw[28][0] = 0;rain_draw[29][0] = 0;rain_draw[30][0] = 0;rain_draw[31][0] = 0;rain_draw[32][0] = 0;rain_draw[33][0] = 0;rain_draw[34][0] = 0;rain_draw[35][0] = 0;rain_draw[36][0] = 0;rain_draw[37][0] = 0;rain_draw[38][0] = 0;rain_draw[39][0] = 0;rain_draw[40][0] = 0;rain_draw[41][0] = 0;rain_draw[42][0] = 0;rain_draw[43][0] = 0;rain_draw[44][0] = 0;rain_draw[45][0] = 0;rain_draw[46][0] = 0;rain_draw[47][0] = 0;rain_draw[48][0] = 0;rain_draw[49][0] = 0;rain_draw[50][0] = 0;rain_draw[51][0] = 0;rain_draw[52][0] = 0;rain_draw[53][0] = 0;rain_draw[54][0] = 0;rain_draw[55][0] = 0;rain_draw[56][0] = 0;rain_draw[57][0] = 0;rain_draw[58][0] = 0;rain_draw[59][0] = 0;rain_draw[60][0] = 0;rain_draw[61][0] = 0;rain_draw[62][0] = 0;rain_draw[63][0] = 0;rain_draw[64][0] = 0;rain_draw[65][0] = 0;rain_draw[66][0] = 0;rain_draw[67][0] = 0;rain_draw[68][0] = 0;rain_draw[69][0] = 0;rain_draw[70][0] = 0;rain_draw[71][0] = 0;rain_draw[72][0] = 0;rain_draw[73][0] = 0;rain_draw[74][0] = 0;rain_draw[75][0] = 0;rain_draw[76][0] = 0;rain_draw[77][0] = 0;rain_draw[78][0] = 0;rain_draw[79][0] = 0;rain_draw[80][0] = 0;rain_draw[81][0] = 0;rain_draw[82][0] = 0;rain_draw[83][0] = 0;rain_draw[84][0] = 0;rain_draw[85][0] = 0;rain_draw[86][0] = 0;rain_draw[87][0] = 0;rain_draw[88][0] = 0;rain_draw[89][0] = 0;rain_draw[90][0] = 0;rain_draw[91][0] = 0;rain_draw[92][0] = 0;rain_draw[93][0] = 0;rain_draw[94][0] = 0;rain_draw[95][0] = 0;
         rain_draw[0][1] = 0;rain_draw[1][1] = 0;rain_draw[2][1] = 0;rain_draw[3][1] = 0;rain_draw[4][1] = 0;rain_draw[5][1] = 0;rain_draw[6][1] = 0;rain_draw[7][1] = 0;rain_draw[8][1] = 0;rain_draw[9][1] = 0;rain_draw[10][1] = 0;rain_draw[11][1] = 0;rain_draw[12][1] = 0;rain_draw[13][1] = 0;rain_draw[14][1] = 0;rain_draw[15][1] = 0;rain_draw[16][1] = 0;rain_draw[17][1] = 0;rain_draw[18][1] = 0;rain_draw[19][1] = 0;rain_draw[20][1] = 0;rain_draw[21][1] = 0;rain_draw[22][1] = 0;rain_draw[23][1] = 0;rain_draw[24][1] = 0;rain_draw[25][1] = 0;rain_draw[26][1] = 0;rain_draw[27][1] = 0;rain_draw[28][1] = 0;rain_draw[29][1] = 0;rain_draw[30][1] = 0;rain_draw[31][1] = 0;rain_draw[32][1] = 0;rain_draw[33][1] = 0;rain_draw[34][1] = 0;rain_draw[35][1] = 0;rain_draw[36][1] = 0;rain_draw[37][1] = 0;rain_draw[38][1] = 0;rain_draw[39][1] = 0;rain_draw[40][1] = 0;rain_draw[41][1] = 0;rain_draw[42][1] = 0;rain_draw[43][1] = 0;rain_draw[44][1] = 0;rain_draw[45][1] = 0;rain_draw[46][1] = 0;rain_draw[47][1] = 0;rain_draw[48][1] = 0;rain_draw[49][1] = 0;rain_draw[50][1] = 0;rain_draw[51][1] = 0;rain_draw[52][1] = 0;rain_draw[53][1] = 0;rain_draw[54][1] = 0;rain_draw[55][1] = 0;rain_draw[56][1] = 0;rain_draw[57][1] = 0;rain_draw[58][1] = 0;rain_draw[59][1] = 0;rain_draw[60][1] = 0;rain_draw[61][1] = 0;rain_draw[62][1] = 0;rain_draw[63][1] = 0;rain_draw[64][1] = 0;rain_draw[65][1] = 0;rain_draw[66][1] = 0;rain_draw[67][1] = 0;rain_draw[68][1] = 0;rain_draw[69][1] = 0;rain_draw[70][1] = 0;rain_draw[71][1] = 0;rain_draw[72][1] = 0;rain_draw[73][1] = 0;rain_draw[74][1] = 0;rain_draw[75][1] = 0;rain_draw[76][1] = 0;rain_draw[77][1] = 0;rain_draw[78][1] = 0;rain_draw[79][1] = 0;rain_draw[80][1] = 0;rain_draw[81][1] = 0;rain_draw[82][1] = 0;rain_draw[83][1] = 0;rain_draw[84][1] = 0;rain_draw[85][1] = 0;rain_draw[86][1] = 0;rain_draw[87][1] = 0;rain_draw[88][1] = 0;rain_draw[89][1] = 0;rain_draw[90][1] = 0;rain_draw[91][1] = 0;rain_draw[92][1] = 0;rain_draw[93][1] = 0;rain_draw[94][1] = 0;rain_draw[95][1] = 0;
         rain_draw[0][2] = 0;rain_draw[1][2] = 0;rain_draw[2][2] = 0;rain_draw[3][2] = 0;rain_draw[4][2] = 0;rain_draw[5][2] = 0;rain_draw[6][2] = 0;rain_draw[7][2] = 0;rain_draw[8][2] = 0;rain_draw[9][2] = 0;rain_draw[10][2] = 0;rain_draw[11][2] = 0;rain_draw[12][2] = 0;rain_draw[13][2] = 0;rain_draw[14][2] = 0;rain_draw[15][2] = 0;rain_draw[16][2] = 0;rain_draw[17][2] = 0;rain_draw[18][2] = 0;rain_draw[19][2] = 0;rain_draw[20][2] = 0;rain_draw[21][2] = 0;rain_draw[22][2] = 0;rain_draw[23][2] = 0;rain_draw[24][2] = 0;rain_draw[25][2] = 0;rain_draw[26][2] = 0;rain_draw[27][2] = 0;rain_draw[28][2] = 0;rain_draw[29][2] = 0;rain_draw[30][2] = 0;rain_draw[31][2] = 0;rain_draw[32][2] = 0;rain_draw[33][2] = 0;rain_draw[34][2] = 0;rain_draw[35][2] = 0;rain_draw[36][2] = 0;rain_draw[37][2] = 0;rain_draw[38][2] = 0;rain_draw[39][2] = 0;rain_draw[40][2] = 0;rain_draw[41][2] = 0;rain_draw[42][2] = 0;rain_draw[43][2] = 0;rain_draw[44][2] = 0;rain_draw[45][2] = 0;rain_draw[46][2] = 0;rain_draw[47][2] = 0;rain_draw[48][2] = 0;rain_draw[49][2] = 0;rain_draw[50][2] = 0;rain_draw[51][2] = 0;rain_draw[52][2] = 0;rain_draw[53][2] = 0;rain_draw[54][2] = 0;rain_draw[55][2] = 0;rain_draw[56][2] = 0;rain_draw[57][2] = 0;rain_draw[58][2] = 0;rain_draw[59][2] = 0;rain_draw[60][2] = 0;rain_draw[61][2] = 0;rain_draw[62][2] = 0;rain_draw[63][2] = 0;rain_draw[64][2] = 0;rain_draw[65][2] = 0;rain_draw[66][2] = 0;rain_draw[67][2] = 0;rain_draw[68][2] = 0;rain_draw[69][2] = 0;rain_draw[70][2] = 0;rain_draw[71][2] = 0;rain_draw[72][2] = 0;rain_draw[73][2] = 0;rain_draw[74][2] = 0;rain_draw[75][2] = 0;rain_draw[76][2] = 0;rain_draw[77][2] = 0;rain_draw[78][2] = 0;rain_draw[79][2] = 0;rain_draw[80][2] = 0;rain_draw[81][2] = 0;rain_draw[82][2] = 0;rain_draw[83][2] = 0;rain_draw[84][2] = 0;rain_draw[85][2] = 0;rain_draw[86][2] = 0;rain_draw[87][2] = 0;rain_draw[88][2] = 0;rain_draw[89][2] = 0;rain_draw[90][2] = 0;rain_draw[91][2] = 0;rain_draw[92][2] = 0;rain_draw[93][2] = 0;rain_draw[94][2] = 0;rain_draw[95][2] = 0;
@@ -155,188 +157,71 @@ always @(posedge CLOCK_25 or posedge reset) begin
         rain_draw[0][126] = 0;rain_draw[1][126] = 0;rain_draw[2][126] = 0;rain_draw[3][126] = 0;rain_draw[4][126] = 0;rain_draw[5][126] = 0;rain_draw[6][126] = 0;rain_draw[7][126] = 0;rain_draw[8][126] = 0;rain_draw[9][126] = 0;rain_draw[10][126] = 0;rain_draw[11][126] = 0;rain_draw[12][126] = 0;rain_draw[13][126] = 0;rain_draw[14][126] = 0;rain_draw[15][126] = 0;rain_draw[16][126] = 0;rain_draw[17][126] = 0;rain_draw[18][126] = 0;rain_draw[19][126] = 0;rain_draw[20][126] = 0;rain_draw[21][126] = 0;rain_draw[22][126] = 0;rain_draw[23][126] = 0;rain_draw[24][126] = 0;rain_draw[25][126] = 0;rain_draw[26][126] = 0;rain_draw[27][126] = 0;rain_draw[28][126] = 0;rain_draw[29][126] = 0;rain_draw[30][126] = 0;rain_draw[31][126] = 0;rain_draw[32][126] = 0;rain_draw[33][126] = 0;rain_draw[34][126] = 0;rain_draw[35][126] = 0;rain_draw[36][126] = 0;rain_draw[37][126] = 0;rain_draw[38][126] = 0;rain_draw[39][126] = 0;rain_draw[40][126] = 0;rain_draw[41][126] = 0;rain_draw[42][126] = 0;rain_draw[43][126] = 0;rain_draw[44][126] = 0;rain_draw[45][126] = 0;rain_draw[46][126] = 0;rain_draw[47][126] = 0;rain_draw[48][126] = 0;rain_draw[49][126] = 0;rain_draw[50][126] = 0;rain_draw[51][126] = 0;rain_draw[52][126] = 0;rain_draw[53][126] = 0;rain_draw[54][126] = 0;rain_draw[55][126] = 0;rain_draw[56][126] = 0;rain_draw[57][126] = 0;rain_draw[58][126] = 0;rain_draw[59][126] = 0;rain_draw[60][126] = 0;rain_draw[61][126] = 0;rain_draw[62][126] = 0;rain_draw[63][126] = 0;rain_draw[64][126] = 0;rain_draw[65][126] = 0;rain_draw[66][126] = 0;rain_draw[67][126] = 0;rain_draw[68][126] = 0;rain_draw[69][126] = 0;rain_draw[70][126] = 0;rain_draw[71][126] = 0;rain_draw[72][126] = 0;rain_draw[73][126] = 0;rain_draw[74][126] = 0;rain_draw[75][126] = 0;rain_draw[76][126] = 0;rain_draw[77][126] = 0;rain_draw[78][126] = 0;rain_draw[79][126] = 0;rain_draw[80][126] = 0;rain_draw[81][126] = 0;rain_draw[82][126] = 0;rain_draw[83][126] = 0;rain_draw[84][126] = 0;rain_draw[85][126] = 0;rain_draw[86][126] = 0;rain_draw[87][126] = 0;rain_draw[88][126] = 0;rain_draw[89][126] = 0;rain_draw[90][126] = 0;rain_draw[91][126] = 0;rain_draw[92][126] = 0;rain_draw[93][126] = 0;rain_draw[94][126] = 0;rain_draw[95][126] = 0;
         rain_draw[0][127] = 0;rain_draw[1][127] = 0;rain_draw[2][127] = 0;rain_draw[3][127] = 0;rain_draw[4][127] = 0;rain_draw[5][127] = 0;rain_draw[6][127] = 0;rain_draw[7][127] = 0;rain_draw[8][127] = 0;rain_draw[9][127] = 0;rain_draw[10][127] = 0;rain_draw[11][127] = 0;rain_draw[12][127] = 0;rain_draw[13][127] = 0;rain_draw[14][127] = 0;rain_draw[15][127] = 0;rain_draw[16][127] = 0;rain_draw[17][127] = 0;rain_draw[18][127] = 0;rain_draw[19][127] = 0;rain_draw[20][127] = 0;rain_draw[21][127] = 0;rain_draw[22][127] = 0;rain_draw[23][127] = 0;rain_draw[24][127] = 0;rain_draw[25][127] = 0;rain_draw[26][127] = 0;rain_draw[27][127] = 0;rain_draw[28][127] = 0;rain_draw[29][127] = 0;rain_draw[30][127] = 0;rain_draw[31][127] = 0;rain_draw[32][127] = 0;rain_draw[33][127] = 0;rain_draw[34][127] = 0;rain_draw[35][127] = 0;rain_draw[36][127] = 0;rain_draw[37][127] = 0;rain_draw[38][127] = 0;rain_draw[39][127] = 0;rain_draw[40][127] = 0;rain_draw[41][127] = 0;rain_draw[42][127] = 0;rain_draw[43][127] = 0;rain_draw[44][127] = 0;rain_draw[45][127] = 0;rain_draw[46][127] = 0;rain_draw[47][127] = 0;rain_draw[48][127] = 0;rain_draw[49][127] = 0;rain_draw[50][127] = 0;rain_draw[51][127] = 0;rain_draw[52][127] = 0;rain_draw[53][127] = 0;rain_draw[54][127] = 0;rain_draw[55][127] = 0;rain_draw[56][127] = 0;rain_draw[57][127] = 0;rain_draw[58][127] = 0;rain_draw[59][127] = 0;rain_draw[60][127] = 0;rain_draw[61][127] = 0;rain_draw[62][127] = 0;rain_draw[63][127] = 0;rain_draw[64][127] = 0;rain_draw[65][127] = 0;rain_draw[66][127] = 0;rain_draw[67][127] = 0;rain_draw[68][127] = 0;rain_draw[69][127] = 0;rain_draw[70][127] = 0;rain_draw[71][127] = 0;rain_draw[72][127] = 0;rain_draw[73][127] = 0;rain_draw[74][127] = 0;rain_draw[75][127] = 0;rain_draw[76][127] = 0;rain_draw[77][127] = 0;rain_draw[78][127] = 0;rain_draw[79][127] = 0;rain_draw[80][127] = 0;rain_draw[81][127] = 0;rain_draw[82][127] = 0;rain_draw[83][127] = 0;rain_draw[84][127] = 0;rain_draw[85][127] = 0;rain_draw[86][127] = 0;rain_draw[87][127] = 0;rain_draw[88][127] = 0;rain_draw[89][127] = 0;rain_draw[90][127] = 0;rain_draw[91][127] = 0;rain_draw[92][127] = 0;rain_draw[93][127] = 0;rain_draw[94][127] = 0;rain_draw[95][127] = 0;
     end
+    
     else begin
-        case (zone)
+        if (h_counter > x_limite) begin
+            x_pos_reg = x_limite;
+            x_limite = x_limite + 128;
+        end
+
+        if (v_counter > y_limite) begin
+            y_pos_reg = y_limite;
+            y_limite = y_limite + 96;
+        end
+
+        if (h_counter > 96 + 33 + 640) begin
+            if (rain_frame == 0) begin
+                x_limite = 96 + 48 - 10;
+            end
+            if (rain_frame == 1) begin
+                x_limite = 96 + 48;
+            end
+            if (rain_frame == 2) begin
+                x_limite = 96 + 48 + 10;
+            end
+        end
+
+        if (v_counter > 2 + 33 + 480) begin
+            if (rain_frame == 0) begin
+                y_limite = 2 + 33 - 10;
+            end
+            else if (rain_frame == 1) begin
+                y_limite = 2 + 33;
+            end
+            else if (rain_frame == 2) begin
+                y_limite = 2 + 33 + 10;
+            end
+        end
+
+        rain_timer = rain_timer + 1;
+        case (rain_frame)
             0: begin
-                x_pos_reg = 96;
-                y_pos_reg = 2;
-                if (h_counter > 95 + 128) begin
-                    zone = 1;
+                if (rain_timer == MAX_TIMER) begin
+                    rain_frame = 1;
+                    rain_timer = 0;
                 end
             end
             1: begin
-                x_pos_reg = 96 + 128;
-                y_pos_reg = 2;
-                if (h_counter > 95 + 128*2) begin
-                    zone = 2;
+                if (rain_timer == MAX_TIMER) begin
+                    rain_frame = 2;
+                    rain_timer = 0;
                 end
+
             end
             2: begin
-                x_pos_reg = 96 + 128*2;
-                y_pos_reg = 2;
-                if (h_counter > 95 + 128*3) begin
-                    zone = 3;
-                end
-            end
-            3: begin
-                x_pos_reg = 96 + 128*3;
-                y_pos_reg = 2;
-                if (h_counter > 95 + 128*4) begin
-                    zone = 4;
-                end
-            end
-            4: begin
-                x_pos_reg = 96 + 128*4;
-                y_pos_reg = 2;
-                if (v_counter > 2 + 96) begin
-                    zone = 5;
-                end
-            end
-            5: begin
-                x_pos_reg = 96;
-                y_pos_reg = 2 + 96;
-                if (h_counter > 95 + 128) begin
-                    zone = 6;
-                end
-            end
-            6: begin
-                x_pos_reg = 96 + 128;
-                y_pos_reg = 2 + 96;
-                if (h_counter > 95 + 128*2) begin
-                    zone = 7;
-                end
-            end
-            7: begin
-                x_pos_reg = 96 + 128*2;
-                y_pos_reg = 2 + 96;
-                if (h_counter > 95 + 128*3) begin
-                    zone = 8;
-                end
-            end
-            8: begin
-                x_pos_reg = 96 + 128*3;
-                y_pos_reg = 2 + 96;
-                if (h_counter > 95 + 128*4) begin
-                    zone = 9;
-                end
-            end
-            9: begin
-                x_pos_reg = 96 + 128*4;
-                y_pos_reg = 2 + 96;
-                if (v_counter > 2 + 96*2) begin
-                    zone = 10;
-                end
-            end
-            10: begin
-                x_pos_reg = 96;
-                y_pos_reg = 2 + 96*2;
-                if (h_counter > 95 + 128) begin
-                    zone = 11;
-                end
-            end
-            11: begin
-                x_pos_reg = 96 + 128;
-                y_pos_reg = 2 + 96*2;
-                if (h_counter > 95 + 128*2) begin
-                    zone = 12;
-                end
-            end
-            12: begin
-                x_pos_reg = 96 + 128*2;
-                y_pos_reg = 2 + 96*2;
-                if (h_counter > 95 + 128*3) begin
-                    zone = 13;
-                end
-            end
-            13: begin
-                x_pos_reg = 96 + 128*3;
-                y_pos_reg = 2 + 96*2;
-                if (h_counter > 95 + 128*4) begin
-                    zone = 14;
-                end
-            end
-            14: begin
-                x_pos_reg = 96 + 128*4;
-                y_pos_reg = 2 + 96*2;
-                if (v_counter > 2 + 96*3) begin
-                    zone = 15;
-                end
-            end
-            15: begin
-                x_pos_reg = 96;
-                y_pos_reg = 2 + 96*3;
-                if (h_counter > 95 + 128) begin
-                    zone = 16;
-                end
-            end
-            16: begin
-                x_pos_reg = 96 + 128;
-                y_pos_reg = 2 + 96*3;
-                if (h_counter > 95 + 128*2) begin
-                    zone = 17;
-                end
-            end
-            17: begin
-                x_pos_reg = 96 + 128*2;
-                y_pos_reg = 2 + 96*3;
-                if (h_counter > 95 + 128*3) begin
-                    zone = 18;
-                end
-            end
-            18: begin
-                x_pos_reg = 96 + 128*3;
-                y_pos_reg = 2 + 96*3;
-                if (h_counter > 95 + 128*4) begin
-                    zone = 19;
-                end
-            end
-            19: begin
-                x_pos_reg = 96 + 128*4;
-                y_pos_reg = 2 + 96*3;
-                if (v_counter > 2 + 96*4) begin
-                    zone = 20;
-                end
-            end
-            20: begin
-                x_pos_reg = 96;
-                y_pos_reg = 2 + 96*4;
-                if (h_counter > 95 + 128) begin
-                    zone = 21;
-                end
-            end
-            21: begin
-                x_pos_reg = 96 + 128;
-                y_pos_reg = 2 + 96*4;
-                if (h_counter > 95 + 128*2) begin
-                    zone = 22;
-                end
-            end
-            22: begin
-                x_pos_reg = 96 + 128*2;
-                y_pos_reg = 2 + 96*4;
-                if (h_counter > 95 + 128*3) begin
-                    zone = 23;
-                end
-            end
-            23: begin
-                x_pos_reg = 96 + 128*3;
-                y_pos_reg = 2 + 96*4;
-                if (h_counter > 95 + 128*4) begin
-                    zone = 24;
-                end
-            end
-            24: begin
-                x_pos_reg = 96 + 128*4;
-                y_pos_reg = 2 + 96*4;
-                if (v_counter > 2 + 96*5) begin
-                    zone = 25;
+                if (rain_timer == MAX_TIMER) begin
+                    rain_frame = 0;
+                    rain_timer = 0;
                 end
             end
         endcase
     end
-        
 end
 
-assign active_rain = (rain_draw[v_counter - y_pos][h_counter - x_pos]) ? 1 : 0;
+
+assign x_pos = x_pos_reg;
+assign y_pos = y_pos_reg;
+
+assign active_rain = (rain_draw[v_counter - y_pos_reg][h_counter - x_pos_reg]) ? 1 : 0;
 
 endmodule

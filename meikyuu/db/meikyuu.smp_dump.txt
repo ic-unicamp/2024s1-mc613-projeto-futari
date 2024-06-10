@@ -1,4 +1,10 @@
 
+State Machine - |meikyuu|rain:rain|rain_frame
+Name rain_frame.00 rain_frame.10 rain_frame.01 
+rain_frame.00 0 0 0 
+rain_frame.01 1 0 1 
+rain_frame.10 1 1 0 
+
 State Machine - |meikyuu|player:player|estado
 Name estado.MOVE_UP estado.MOVE_LEFT estado.MOVE_RIGHT estado.MOVE_DOWN estado.IDLE 
 estado.IDLE 0 0 0 0 0 

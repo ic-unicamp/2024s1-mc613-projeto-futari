@@ -65,8 +65,8 @@ player player(
 );
 wire active_rain;
 wire active_rain_draw;
-wire x_pos_rain;
-wire y_pos_rain;
+wire [9:0] x_pos_rain;
+wire [9:0] y_pos_rain;
 
 rain rain(
   .CLOCK_25(CLOCK_25),
@@ -193,7 +193,7 @@ assign VGA_HS = (h_counter <= 96) ? 1 : 0;
 assign VGA_VS = (v_counter <= 2) ? 1 : 0;
 assign active = ((v_counter > 2) && (h_counter > 96)) ? 1 : 0;
 assign active_cube = (((v_counter > y_pos) && (h_counter > x_pos) && (v_counter <= y_pos + 20) && (h_counter <= x_pos + 11)) && active_draw) ? 1 : 0;
-assign active_rain = (((v_counter > y_pos_rain) && (h_counter > x_pos_rain) && (v_counter <= y_pos_rain + 96) && (h_counter <= x_pos_rain + 128)) && active_) ? 1 : 0;
+assign active_rain = (((v_counter > y_pos_rain) && (h_counter > x_pos_rain) && (v_counter <= y_pos_rain + 96) && (h_counter <= x_pos_rain + 128)) && active_rain_draw) ? 1 : 0;
 
 wire mapa_vertical = active && (h_counter < 96 + 100 || h_counter > 96 + 640 - 100) ? 1 : 0; // Parades retas horizontais
 wire mapa_vertical_colision = (x_pos < 96 + 100 || x_pos + 11 > 96 + 640 - 100) ? 1 : 0;
