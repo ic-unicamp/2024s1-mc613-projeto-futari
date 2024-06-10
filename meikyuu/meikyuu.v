@@ -35,9 +35,9 @@ wire [2:0] mapa_x_pos;
 wire [2:0] mapa_y_pos;
 
 
-assign VGA_R = active_rain ? 8'd70 : active_cube ? 8'd115 : mapa_atual ? 8'd36 : 0;
-assign VGA_G = active_rain ? 8'd78 : active_cube ? 8'd000 : mapa_atual ? 8'd60 : 0;
-assign VGA_B = active_rain ? 8'd80 : active_cube ? 8'd160 : mapa_atual ? 0 : 0;
+assign VGA_R = end_game ? 8'd000 : active_rain ? 8'd70 : active_cube ? 8'd115 : mapa_atual ? 8'd36 : active_house ? 8'd255 : 0;
+assign VGA_G = end_game ? 8'd255 : active_rain ? 8'd78 : active_cube ? 8'd000 : mapa_atual ? 8'd60 : active_house ? 8'd255 : 0;
+assign VGA_B = end_game ? 8'd000 : active_rain ? 8'd80 : active_cube ? 8'd160 : mapa_atual ? 8'd00 : active_house ? 8'd255 : 0;
 
 assign VGA_SYNC_N = 0;
 assign VGA_BLANK_N = 1;
@@ -48,6 +48,7 @@ wire active_draw;
 player player(
   .CLOCK_25(CLOCK_25),
   .reset(reset),
+  .enable(~end_game),
   .x_pos_in(x_pos),
   .y_pos_in(y_pos),
   .collision(mapa_colision),
@@ -78,6 +79,19 @@ rain rain(
   .active_rain(active_rain_draw),
 );
 
+wire active_house;
+wire active_house_draw;
+
+objective house(
+  .CLOCK_25(CLOCK_25),
+  .reset(reset),
+  .h_counter(h_counter),
+  .v_counter(v_counter),
+  .x_map(mapa_x_pos),
+  .y_map(mapa_y_pos),
+  .active_house_draw(active_house_draw),
+);
+
 always @(posedge CLOCK_50 or posedge reset) begin
   if(reset) begin
     CLOCK_25 = 0;
@@ -97,7 +111,7 @@ always @ (posedge CLOCK_25 or posedge reset) begin
     mapa_global[3][0] = 07; mapa_global[3][1] = 11; mapa_global[3][2] = 00; mapa_global[3][3] = 10; mapa_global[3][4] = 11; mapa_global[3][5] = 00; mapa_global[3][6] = 10; mapa_global[3][7] = 00;
     mapa_global[4][0] = 00; mapa_global[4][1] = 06; mapa_global[4][2] = 14; mapa_global[4][3] = 01; mapa_global[4][4] = 01; mapa_global[4][5] = 02; mapa_global[4][6] = 10; mapa_global[4][7] = 12;
     mapa_global[5][0] = 03; mapa_global[5][1] = 01; mapa_global[5][2] = 06; mapa_global[5][3] = 08; mapa_global[5][4] = 04; mapa_global[5][5] = 01; mapa_global[5][6] = 00; mapa_global[5][7] = 00;
-    mapa_global[6][0] = 01; mapa_global[6][1] = 11; mapa_global[6][2] = 00; mapa_global[6][3] = 10; mapa_global[6][4] = 00; mapa_global[6][5] = 08; mapa_global[6][6] = 00; mapa_global[6][7] = 00;
+    mapa_global[6][0] = 01; mapa_global[6][1] = 11; mapa_global[6][2] = 15; mapa_global[6][3] = 10; mapa_global[6][4] = 00; mapa_global[6][5] = 08; mapa_global[6][6] = 00; mapa_global[6][7] = 00;
     mapa_global[7][0] = 10; mapa_global[7][1] = 01; mapa_global[7][2] = 13; mapa_global[7][3] = 01; mapa_global[7][4] = 02; mapa_global[7][5] = 08; mapa_global[7][6] = 09; mapa_global[7][7] = 09;
 
   end else begin
@@ -186,7 +200,36 @@ always @(posedge CLOCK_25) begin
       mapa_atual_reg = mapa_T_left;
       mapa_colision_reg = mapa_T_left_colision;
     end
+    15: begin
+      mapa_atual_reg = mapa_end;
+      mapa_colision_reg = mapa_end_colision || active_house_colision;
+    end
   endcase
+end
+
+reg end_game;
+reg [2:0] end_game_state;
+
+always @(posedge CLOCK_25 or posedge reset) begin
+  if (reset) begin
+    end_game = 0;
+    end_game_state = 0;
+  end
+  else begin
+    case (end_game_state)
+      0: begin
+        if(active_house_colision) begin
+          end_game = 1;
+          end_game_state = 1;
+        end
+      end
+
+      1: begin
+          end_game = 1;
+          end_game_state = 1;
+      end
+    endcase
+  end
 end
 
 assign VGA_HS = (h_counter <= 96) ? 1 : 0;
@@ -194,6 +237,9 @@ assign VGA_VS = (v_counter <= 2) ? 1 : 0;
 assign active = ((v_counter > 2) && (h_counter > 96)) ? 1 : 0;
 assign active_cube = (((v_counter > y_pos) && (h_counter > x_pos) && (v_counter <= y_pos + 20) && (h_counter <= x_pos + 11)) && active_draw) ? 1 : 0;
 assign active_rain = (((v_counter > y_pos_rain) && (h_counter > x_pos_rain) && (v_counter <= y_pos_rain + 96) && (h_counter <= x_pos_rain + 128)) && active_rain_draw) ? 1 : 0;
+
+assign active_house = (((v_counter > 222 + 35) && (h_counter > 300 + 144) && (v_counter <= 222 + 36 + 35) && (h_counter <= 300 + 40 + 144)) && active_house_draw) ? 1 : 0;
+assign active_house_colision = (((y_pos + 20 > 222 + 35) && (x_pos + 11 > 300 + 144) && (y_pos <= 222 + 36 + 35) && (x_pos <= 300 + 40 + 144)) && active_house_draw) ? 1 : 0;
 
 wire mapa_vertical = active && (h_counter < 96 + 100 || h_counter > 96 + 640 - 100) ? 1 : 0; // Parades retas horizontais
 wire mapa_vertical_colision = (x_pos < 96 + 100 || x_pos + 11 > 96 + 640 - 100) ? 1 : 0;
@@ -239,6 +285,9 @@ wire mapa_T_down_colision = (y_pos + 20 > 2 + 480 - 100 || (y_pos < 2 + 100 && x
 
 wire mapa_T_left = active && (h_counter < 96 + 100 || (h_counter > 96 + 640 - 100 && v_counter < 2 + 100) || (h_counter > 96 + 640 - 100 && v_counter > 2 + 480 - 100)) ? 1 : 0; // Parede em T
 wire mapa_T_left_colision = (x_pos < 96 + 100 || (x_pos + 11 > 96 + 640 - 100 && y_pos < 2 + 100) || (x_pos + 11 > 96 + 640 - 100 && y_pos + 20 > 2 + 480 - 100)) ? 1 : 0;
+
+wire mapa_end = active && ((h_counter < 96 + 100 && v_counter > 2 + 480 - 100) || (h_counter > 96 + 640 - 100 && v_counter > 2 + 480 - 100)) ? 1 : 0;
+wire mapa_end_colision = ((x_pos < 96 + 100 && y_pos + 20 > 2 + 480 - 100) || (x_pos +  11 > 96 + 640 - 100 && y_pos + 20 > 2 + 480 - 100)) ? 1 : 0;
 
 wire mapa_atual = mapa_atual_reg;
 wire mapa_colision = mapa_colision_reg;

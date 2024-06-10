@@ -1,12 +1,12 @@
-Fitter Status : Successful - Sat Jun  8 18:54:00 2024
+Fitter Status : Successful - Mon Jun 10 17:18:06 2024
 Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 Revision Name : meikyuu
 Top-level Entity Name : meikyuu
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 443 / 32,070 ( 1 % )
-Total registers : 150
+Logic utilization (in ALMs) : 503 / 32,070 ( 2 % )
+Total registers : 154
 Total pins : 35 / 457 ( 8 % )
 Total virtual pins : 0
 Total block memory bits : 0 / 4,065,280 ( 0 % )

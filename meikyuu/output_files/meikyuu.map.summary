@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Sat Jun  8 18:53:41 2024
+Analysis & Synthesis Status : Successful - Mon Jun 10 17:17:45 2024
 Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 Revision Name : meikyuu
 Top-level Entity Name : meikyuu
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 139
+Total registers : 141
 Total pins : 35
 Total virtual pins : 0
 Total block memory bits : 0

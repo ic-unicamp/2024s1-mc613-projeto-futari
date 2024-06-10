@@ -1,6 +1,7 @@
 module player (
     input CLOCK_25,
     input reset,
+    input enable,
     input [9:0] x_pos_in,
     input [9:0] y_pos_in,
     input collision,
@@ -44,6 +45,7 @@ localparam MOVE_DOWN  = 3'b010;
 localparam MOVE_RIGHT = 3'b011;
 localparam MOVE_LEFT  = 3'b100;
 localparam IDLE       = 3'b101;
+localparam DEAD       = 3'b110;
 
 
 always @ (posedge CLOCK_25 or posedge reset) begin
@@ -91,7 +93,10 @@ always @ (posedge CLOCK_25 or posedge reset) begin
                 end
                 else if (~btn_right) begin
                     estado = MOVE_RIGHT;
-                end else begin
+                end else if (~enable) begin
+                    estado = DEAD;
+                end
+                else begin
                     estado = IDLE;
                     move_timer = 0;
                 end
@@ -105,8 +110,8 @@ always @ (posedge CLOCK_25 or posedge reset) begin
                     move_timer = move_timer + 1;
                     estado = MOVE_LEFT;
                     if(collision) begin
-                            x_pos = x_pos + 1;
-                        end
+                        x_pos = x_pos + 1;
+                    end
 
                     if (move_timer == MAX_TIMER) begin
                         move_timer = 0;
@@ -114,6 +119,9 @@ always @ (posedge CLOCK_25 or posedge reset) begin
                     end
                 end else begin
                     estado = IDLE;
+                end
+                if (~enable) begin
+                    estado = DEAD;
                 end
             end
 
@@ -135,6 +143,9 @@ always @ (posedge CLOCK_25 or posedge reset) begin
                 end else begin
                     estado = IDLE;
                 end
+                if (~enable) begin
+                    estado = DEAD;
+                end
             end
             
             MOVE_UP: begin
@@ -154,6 +165,9 @@ always @ (posedge CLOCK_25 or posedge reset) begin
                     end
                 end else begin
                     estado = IDLE;
+                end
+                if (~enable) begin
+                    estado = DEAD;
                 end
             end
 
@@ -176,8 +190,17 @@ always @ (posedge CLOCK_25 or posedge reset) begin
                 end else begin
                     estado = IDLE;
                 end
+                if (~enable) begin
+                    estado = DEAD;
+                end
             end
-        endcase            
+            DEAD: begin
+                estado = DEAD;
+            end
+            default: begin
+                estado = IDLE;
+            end
+        endcase           
     end
 end
 
