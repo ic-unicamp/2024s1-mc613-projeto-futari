@@ -1,8 +1,9 @@
 
 State Machine - |meikyuu|end_game_state
-Name end_game_state.001 
-end_game_state.000 0 
-end_game_state.001 1 
+Name end_game_state.000 end_game_state.010 end_game_state.001 
+end_game_state.000 0 0 0 
+end_game_state.001 1 0 1 
+end_game_state.010 1 1 0 
 
 State Machine - |meikyuu|rain:rain|rain_frame
 Name rain_frame.00 rain_frame.10 rain_frame.01 

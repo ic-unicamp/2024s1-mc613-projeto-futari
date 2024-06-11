@@ -116,11 +116,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "btn_up",
+					"name" : "btn_down",
 					"strict" : false
 				},
 				{
-					"name" : "btn_down",
+					"name" : "btn_up",
 					"strict" : false
 				},
 				{
