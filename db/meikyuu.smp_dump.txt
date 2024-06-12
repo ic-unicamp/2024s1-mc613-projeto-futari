@@ -1,0 +1,21 @@
+
+State Machine - |meikyuu|end_game_state
+Name end_game_state.000 end_game_state.010 end_game_state.001 
+end_game_state.000 0 0 0 
+end_game_state.001 1 0 1 
+end_game_state.010 1 1 0 
+
+State Machine - |meikyuu|rain:rain|rain_frame
+Name rain_frame.00 rain_frame.10 rain_frame.01 
+rain_frame.00 0 0 0 
+rain_frame.01 1 0 1 
+rain_frame.10 1 1 0 
+
+State Machine - |meikyuu|player:player|estado
+Name estado.DEAD estado.MOVE_UP estado.MOVE_LEFT estado.MOVE_RIGHT estado.MOVE_DOWN estado.IDLE 
+estado.IDLE 0 0 0 0 0 0 
+estado.MOVE_DOWN 0 0 0 0 1 1 
+estado.MOVE_RIGHT 0 0 0 1 0 1 
+estado.MOVE_LEFT 0 0 1 0 0 1 
+estado.MOVE_UP 0 1 0 0 0 1 
+estado.DEAD 1 0 0 0 0 1 
